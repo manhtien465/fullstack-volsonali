@@ -30,6 +30,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const data = await getGlobalPageData();
+  console.log('data',data)
   if (!data) notFound();
 
   const { topNav, footer } = data.data;

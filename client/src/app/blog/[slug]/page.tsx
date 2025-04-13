@@ -19,7 +19,7 @@ export async function generateMetadata({
   const status = isDraftMode ? "draft" : "published";
 
   const data = await getBlogPostBySlug(slug, status);
-
+  console.log("Post",data)
   if (!data?.data?.[0]) {
     return {
       title: "Next.js Strapi Preview",

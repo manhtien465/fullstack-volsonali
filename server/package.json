@@ -6,7 +6,7 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
+    "build": "NODE_OPTIONS='--max-old-space-size=4096' strapi build",
     "strapi": "strapi",
     "deploy": "strapi deploy"
   },
@@ -25,6 +25,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "strapi-plugin-comments": "^3.0.9",
     "strapi-plugin-yt-clips": "0.0.2",
     "styled-components": "^6.0.0"
   },
