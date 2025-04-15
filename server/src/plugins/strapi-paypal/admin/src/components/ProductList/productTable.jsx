@@ -23,6 +23,7 @@ import {LinkIcon} from './linkIcon';
 import { currencies } from './constant';
 import { EmbedCodeModal } from './embedCodeModal';
 import  { SettingLink } from './SettingLink';
+import { CreateProduct } from '../CreateProduct/index1';
 
 const ProductTable = ({
   products,
@@ -150,14 +151,17 @@ const ProductTable = ({
         paddingRight={7}
         background="neutral100"
       >
+        <CreateProduct></CreateProduct>
+        
         {products && products.length > 0 ? (
           <Table
             colCount={COL_COUNT}
             rowCount={ROW_COUNT}
             footer={
-              <TFooter icon={<Plus />} onClick={handleClickCreateProduct}>
-                Create New Product / Subscription
-              </TFooter>
+              // <TFooter icon={<Plus />} onClick={handleClickCreateProduct}>
+              //   Create New Product / Subscription
+              //   </TFooter>
+              <></>
             }
           >
             <Thead>
