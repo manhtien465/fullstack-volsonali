@@ -80,7 +80,7 @@ const ProductList = () => {
       trialPeriodDays,
       productType,
     } = data;
-
+    
     const createProduct = await createPaypalProduct(
       title,
       price,
@@ -93,7 +93,7 @@ const ProductList = () => {
     );
 
     if (createProduct?.data?.id) {
-      setIsVisible(false);
+      setIsVisible(!isVisible);
     }
   };
 
@@ -141,12 +141,7 @@ const ProductList = () => {
       <Box padding={3}>
         <Divider />
       </Box>
-      <CreateProduct
-        isVisible={isVisible}
-        handleClose={handleCloseModal}
-        handleClickSave={data => handleSaveProduct(data)}
-      />
-
+     
       {isAlert ? (
         <Box paddingLeft={6} paddingRight={6}>
           <Alert closeLabel="Close alert" title="Error" variant="danger" onClose={handleCloseAlert}>
@@ -170,6 +165,7 @@ const ProductList = () => {
           sortAscendingPrice={sortAscendingPrice}
           handleClickCreateProduct={handleClickCreateProduct}
           isPaypalSettings={isPaypalSettings}
+          handleSaveProduct={handleSaveProduct}
         />
       </Box>
     </Box>

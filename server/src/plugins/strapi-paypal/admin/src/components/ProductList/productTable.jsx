@@ -17,13 +17,14 @@ import { NextLink, PageLink, Pagination, PreviousLink } from '@strapi/design-sys
 import { EmptyStateLayout } from '@strapi/design-system';
 import { VisuallyHidden } from '@strapi/design-system';
 import { Button } from '@strapi/design-system';
-import { ArrowUp, ArrowDown,Plus} from '@strapi/icons';
+import { ArrowUp, ArrowDown,Plus, Pencil} from '@strapi/icons';
 import { Badge } from '@strapi/design-system';
 import {LinkIcon} from './linkIcon';
 import { currencies } from './constant';
-import { EmbedCodeModal } from './embedCodeModal';
+import { EmbedCodeModal } from './embedCodeModal1';
 import  { SettingLink } from './SettingLink';
 import { CreateProduct } from '../CreateProduct/index1';
+import { EditProduct } from '../EditProduct/index';
 
 const ProductTable = ({
   products,
@@ -37,6 +38,7 @@ const ProductTable = ({
   sortAscendingPrice,
   handleClickCreateProduct,
   isPaypalSettings,
+  handleSaveProduct
 }) => {
   const ROW_COUNT = 6;
   const COL_COUNT = 10;
@@ -44,6 +46,8 @@ const ProductTable = ({
   const [isVisible, setIsVisible] = useState(false);
   const [productId, setIsProductId] = useState('');
   const [isSubscription, setIsSubscription] = useState(false);
+  const [isOpenEdit, setIsOpenEdit] = useState(false);
+  const [productSelected, setProductSelected] = useState();
 
   const handleSortArrowUp = () => {
     handleSortDescendingName();
@@ -151,7 +155,8 @@ const ProductTable = ({
         paddingRight={7}
         background="neutral100"
       >
-        <CreateProduct></CreateProduct>
+        <CreateProduct 
+        handleClickSave={data => handleSaveProduct(data)}></CreateProduct>
         
         {products && products.length > 0 ? (
           <Table
@@ -253,20 +258,27 @@ const ProductTable = ({
                     </Td>
                     <Td>
                       <Flex justifyContent="end">
-                        <IconButton
+                          <IconButton
                           onClick={() => handleClickLink(product.id, product.isSubscription)}
                           label="Embed Code"
-                         
-                        >
+                          >
                           <LinkIcon />
                           </IconButton>
-                        {/* <Box paddingLeft={3}>
+                        
                           <IconButton
-                            onClick={() => handleEditClick(product.id)}
+                            onClick={() =>{ setProductSelected(product);setIsOpenEdit(true)}}
                             label="Edit"
-                            icon={<Pencil />}
-                          />
-                        </Box> */}
+                          >
+                          <Pencil />
+                        </IconButton>
+                        <Box paddingLeft={3}>
+                        <IconButton
+                            onClick={() =>{ setProductSelected(product);setIsOpenEdit(true)}}
+                            label="delete"
+                          >
+                          <Pencil />
+                        </IconButton>
+                        </Box>
                         {/* <Box paddingLeft={3}>
                           <Link
                             to={`${url}/report/${product.id}/${product.title}`}
@@ -324,6 +336,7 @@ const ProductTable = ({
       <Box paddingTop={6} paddingBottom={6} paddingLeft={7} paddingRight={7}>
       <SettingLink></SettingLink>
       </Box>
+      <EditProduct product={productSelected} open={isOpenEdit} handleClose={()=>setIsOpenEdit(false) } ></EditProduct>
     </>
   );
 };

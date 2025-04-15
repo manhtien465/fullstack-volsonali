@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
     SingleSelectOption,Grid,NumberInput,Textarea} from '@strapi/design-system';
 
- const CreateProduct = ({ isVisible, handleClose, handleClickSave }) => {
-  const [open, setOpen] = React.useState(false); 
-  const [heading, setHeading] = useState('Product');
+ const EditProduct = ({ product ,open, handleClose, handleClickSave }) => {
+ 
+  const [ heading, setHeading] = useState('Product');
     const [title, setTitle] = useState('');
      const [price, setPrice] = useState();
      const [paymentType, setPaymentType] = useState('');
@@ -21,7 +21,20 @@ import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
        paymentInterval: '',
        productType: '',
      });
-   
+
+     useEffect(() => {
+        if(product){
+             setTitle(product.title);
+              setPrice(product.price);
+              setDescription(product.description);
+              setIsSubscription(product.isSubscription);
+              setPaymentInterval(product.interval);
+              setTrialPeriodDays(product.trialPeriodDays);
+              setPaymentType(product. isSubscription ? "subscription" : "oneTime");
+              setProductType(product.productType);
+        }
+       }, [product])
+
      const handleChange = event => {
        const { name, value } = event.target;
    
@@ -158,10 +171,7 @@ import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
      };
       
   return (
-    <Modal.Root open={open} onOpenChange={setOpen}>
-    <Modal.Trigger>
-    <Button>Create New Product</Button>
-    </Modal.Trigger>
+    <Modal.Root open={open} onOpenChange={handleClose} >
     <Modal.Content>
       <Modal.Header>
          <Flex direction="column" justifyContent="start" alignItems="start">
@@ -185,7 +195,10 @@ import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
     </Flex>
       </Modal.Header>
       <Modal.Body>
-      <form>
+      <form onSubmit={(event) => {
+            handleSaveProduct()
+            event.preventDefault();
+          }}>
         <Grid.Root gap={5}>
         <Grid.Item col={6}>
             <Field.Root error={error.paymentType ? error.paymentType : ''} >
@@ -209,6 +222,7 @@ import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
                 placeholder="Price(Eur)"
                 onValueChange={value => handleChangeNumber(value)}
                 value={price}
+                defaultValue={price}
             />
             <Field.Error />
             <Field.Hint />
@@ -219,7 +233,7 @@ import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
         <Grid.Item col={6}>
             <Field.Root name="title" required error={error.title ? error.title : ''}>
             <Field.Label>Title</Field.Label>
-            <Field.Input onChange={handleChange} />
+            <Field.Input onChange={handleChange} defaultValue={title} />
             </Field.Root>
         </Grid.Item>
 
@@ -253,6 +267,7 @@ import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
                             setDescription(e.target.value);
                             setError({ ...error, description: '' });
                           }}
+                          defaultValue={description}
                         >
                         </Textarea>
             </Field.Root>
@@ -278,13 +293,14 @@ import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
 
         <Grid.Item col={6}>
        { isSubscription && <Field.Root name="Trial Period Days"  disabled={!isSubscription}>
-        <Field.Label>Trial Period Days</Field.Label>
+        <Field.Label>Product Type</Field.Label>
             <NumberInput
             placeholder="Trial Period Days"
             name="trialPeriodDays"
             hint="Free trial period for the subscription."
             onValueChange={value => handleChangeTrialPeriod(value)}
             value={trialPeriodDays}
+            defaultValue={trialPeriodDays}
             />
             </Field.Root>}
             </Grid.Item>
@@ -294,12 +310,12 @@ import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
       </Modal.Body>
       <Modal.Footer>
         <Modal.Close>
-          <Button variant="tertiary">Cancel</Button>
+          <Button variant="tertiary" onClick={handleClose}>Cancel</Button>
         </Modal.Close>
-        <Button  type="submit"onClick={ handleSaveProduct} >Confirm</Button>
+        <Button  type="submit" >Save</Button>
       </Modal.Footer>
     </Modal.Content>
   </Modal.Root>
   )
 }
-export { CreateProduct }
+export { EditProduct }

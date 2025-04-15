@@ -1,6 +1,16 @@
 "use strict";
 
 module.exports = {
+  async createOrderPaypal(ctx){
+    const {
+     id
+    } = ctx.params;
+    const response = await strapi
+    .plugin("strapi-paypal")
+    .service("paypalService")
+    .createOrderPaypal(id);
+  ctx.send(response, 200);
+  },
   async createProduct(ctx) {
     try {
       const {
@@ -76,6 +86,57 @@ module.exports = {
         .service("paypalService")
         .getPaypalCheckout(isSubscription, paypalOrderId, paypalSubcriptionId);
       ctx.send(response, 200);
+    } catch (error) {
+      return {
+        status: 500,
+        message: error.message,
+      };
+    }
+  },
+
+  async webhook(ctx){
+    const response={
+      message:'ok'
+    }
+    ctx.send(response, 200);
+  },
+
+  async delete(ctx){
+    const { id } = ctx.params;
+
+      await strapi
+        .plugin("strapi-paypal")
+        .service("paypalService")
+        .delete(id);
+    ctx.send({}, 200);
+  },
+
+  async updateProduct(ctx) {
+    try {
+      const {
+        title,
+        price,
+        description,
+        isSubscription,
+        paymentInterval,
+        trialPeriodDays,
+        productType,
+      } = ctx.request.body;
+      const { id } = ctx.params;
+      const stripeProductResponse = await strapi
+        .plugin("strapi-paypal")
+        .service("paypalService")
+        .updateStrapiProduct(
+          id,
+          title,
+          price,
+          description,
+          isSubscription,
+          paymentInterval,
+          trialPeriodDays,
+          productType
+        );
+      ctx.send(stripeProductResponse, 200);
     } catch (error) {
       return {
         status: 500,
