@@ -4,17 +4,24 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MobileNavbar } from "@/components/custom/mobile-navbar";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { LogoutButton } from "../custom/logout-button";
 interface HeaderProps {
   data: {
     logoText: string;
     navItems: NavLink[];
     cta: NavLink;
   };
+  user: {
+    username: string
+  }
 }
 
-export function Header({ data }: Readonly<HeaderProps>) {  
+export function Header({ data,user }: Readonly<HeaderProps>) {  
   if (!data) return null;
   const { logoText, navItems, cta } = data;
+  console.log("aaa",user, cta)
   return (
     <header className="container flex items-center justify-between gap-10 py-4">
       <Link href="/" className="flex items-center gap-3">
@@ -43,7 +50,8 @@ export function Header({ data }: Readonly<HeaderProps>) {
             </Link>
           ))}
         </nav>
-        {cta && (
+        {/* Button Signin */}
+        {cta && !user && (
           <div className="hidden items-center gap-2 md:flex">
             <Button asChild>
               <Link
@@ -56,6 +64,19 @@ export function Header({ data }: Readonly<HeaderProps>) {
             </Button>
           </div>
         )}
+       {/* Button Signin */}
+        {user && <Popover>
+          <PopoverTrigger asChild>
+          <Avatar >
+            <AvatarImage src="https://github.com/shadcn.png" alt="User" sizes="2" />
+            <AvatarFallback>JD</AvatarFallback>
+          </Avatar>
+          </PopoverTrigger>
+          <PopoverContent className="w-40">
+            <LogoutButton/>
+          </PopoverContent>
+        </Popover>}
+          
         <ThemeToggle />
       </div>
       <MobileNavbar>

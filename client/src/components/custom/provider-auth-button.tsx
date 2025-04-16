@@ -23,7 +23,7 @@ export function ProviderAuthLink({
   const url = new URL(backendUrl + path);
 
   return (
-    <Link href={url.href} className={cn(buttonVariants({ variant: "outline" }), "flex items-center w-full justify-center")} >
+    <Link href={url.href} className={cn(buttonVariants({ variant: "outline" }), "flex items-center w-full justify-center my-1")} >
       {children}
       <span className="ml-4 text-sm font-semibold leading-6">{buttonText}</span>
     </Link>

@@ -21,8 +21,9 @@ async function logoutAction() {
 export function LogoutButton() {
   return (
     <form action={logoutAction}>
-      <button type="submit" className="bg-transparent flex items-center text-muted-foreground">
-        Logout <LogOut className="ml-2 h-4 w-4" />
+      <button type="submit" className="bg-transparent flex justify-between items-center text-muted-foreground w-full hover:bg-gray-200 border-none rounded px-2 py-2">
+        <div>Logout</div> 
+        <LogOut className="ml-2 h-4 w-4" />
       </button>
     </form>
   );

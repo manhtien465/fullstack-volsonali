@@ -1,9 +1,10 @@
 "use server";
-import { z } from "zod";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { z } from "zod";
 
-import { registerUserService, loginUserService } from "@/data/services";
+import { loginUserService, registerUserService } from "@/data/services";
+import useAuthInfo from "@/hooks/use-auth-info/useAuthInfo";
 
 const config = {
   maxAge: 60 * 60 * 24 * 7, // 1 week
@@ -118,12 +119,15 @@ export async function loginUserAction(prevState: any, formData: FormData) {
       message: "Failed to Login.",
     };
   }
+
   const cookieStore = await cookies();
   cookieStore.set("jwt", responseData.jwt, config);
   redirect("/dashboard");
 }
 
 export async function logoutAction() {
+  const { setUserState } = useAuthInfo.getState()
+  setUserState(undefined)
   const cookieStore = await cookies();
   cookieStore.set("jwt", "", { ...config, maxAge: 0 });
   redirect("/");

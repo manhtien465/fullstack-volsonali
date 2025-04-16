@@ -7,6 +7,10 @@ import { cn } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import { Header, Footer } from "@/components/layout";
 import { getGlobalPageData } from "@/data/loaders";
+import useAuthInfo from "@/hooks/use-auth-info/useAuthInfo";
+import { cookies } from "next/headers";
+import { getUserMeLoader } from "@/data/services/user";
+import ClientAuthHydrator from "@/components/clientHydrator";
 
 const fontSans = Inter({
   variable: "--font-sans",
@@ -29,11 +33,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const token = (await cookies()).get("jwt")?.value;
   const data = await getGlobalPageData();
-  console.log('data',data)
   if (!data) notFound();
 
   const { topNav, footer } = data.data;
+  const userRes = token ? await getUserMeLoader() : null;
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -50,7 +55,8 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header data={topNav}/>
+          
+          <Header data={topNav} user={userRes?.data}/>
           {children}
           <Footer data={footer}/>
         </ThemeProvider>

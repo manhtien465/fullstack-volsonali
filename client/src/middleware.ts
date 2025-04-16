@@ -1,14 +1,29 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { getUserMeLoader } from "@/data/services/user";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function middleware(request: NextRequest) {
-  const user = await getUserMeLoader();
+// Replace with your actual secret
+const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
+
+export function middleware(request: NextRequest) {
+  const token = request.cookies.get("jwt")?.value;
+
+  const protectedPaths = ["/dashboard", "/product"];
   const currentPath = request.nextUrl.pathname;
 
-  if (currentPath.startsWith("/dashboard") && user.ok === false) {
+  const isProtected = protectedPaths.some(path => currentPath.startsWith(path));
+
+  if (!isProtected) return NextResponse.next();
+
+  if (!token) {
     return NextResponse.redirect(new URL("/signin", request.url));
   }
 
-  return NextResponse.next();
+  try {
+    // const decoded = jwt.verify(token, JWT_SECRET);
+    // Optionally attach user info to request
+    // You could also use headers like: request.headers.set("x-user-id", decoded.sub)
+    return NextResponse.next();
+  } catch (err) {
+    console.error("JWT verification failed:", err);
+    return NextResponse.redirect(new URL("/signin", request.url));
+  }
 }
