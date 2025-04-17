@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-export function Pricing(data: Readonly<PriceGridProps>) {
+export function PricingPayment(data: Readonly<PriceGridProps>) {
   if (!data) return null;
   const priceItems = data.priceCard;
 
