@@ -171,6 +171,7 @@ module.exports = ({ strapi }) => ({
       throw new ApplicationError(error.message);
     }
   },
+  
   async getPaypalCheckout(isSubscription, paypalOrderId, paypalSubcriptionId) {
     try {
       // get access token
@@ -212,4 +213,108 @@ module.exports = ({ strapi }) => ({
       throw new ApplicationError(error.message);
     }
   },
+
+  async createOrderPaypal(id){
+    
+    try {
+      const accessToken = await strapi
+    .plugin('strapi-paypal')
+    .service('paypalAccessToken')
+    .getAccessToken();
+
+    const { settings, paypalSandBoxUrl, paypalLiveUrl } = await this.initialize();
+
+    const { isLiveMode, checkoutCancelUrl, checkoutSuccessUrl, currency } = settings;
+
+    const url = isLiveMode ? paypalLiveUrl : paypalSandBoxUrl;
+
+    const product = await strapi
+        .query('plugin::strapi-paypal.paypal-product')
+        .findOne({ where: { id }, populate: true });
+    
+    if(product){
+      const order= await strapi
+      .plugin('strapi-paypal')
+      .service('paypalOrder')
+      .createOrder(
+        product.title,
+        product.price,
+        product.description,
+        accessToken,
+        checkoutSuccessUrl,
+        checkoutCancelUrl,
+        currency,
+        url
+      );
+      const {  status, links } = result;
+        if (status === 'CREATED') {
+          //TODO create order in system
+          }
+      return order
+    }
+   
+    } catch (error) {
+      throw new ApplicationError(error.message);
+    }
+   
+  },
+
+  async delete(id){
+    await strapi
+    .query('plugin::strapi-paypal.paypal-product')
+    .delete({ where: { id } });
+  },
+
+  async updateStrapiProduct(
+    productId,
+    title,
+    productPrice,
+    description,
+    isSubscription,
+    paymentInterval,
+    trialPeriodDays,
+    productType
+  ) {
+    try {
+     
+        if (isSubscription) {
+          const updatedProduct = await strapi.query('plugin::strapi-paypal.paypal-product').update({
+            where: { id: productId },
+            data: {
+              title,
+              description,
+              price: productPrice,
+              currency,
+              isSubscription,
+              interval: paymentInterval,
+              trialPeriodDays,
+             
+            },
+            populate: true,
+          });
+  
+          return updatedProduct;
+        
+      } else {
+        const updated = await strapi.query('plugin::strapi-paypal.paypal-product').update({
+          where: { id: productId },
+          data: {
+            title,
+            description,
+            price: productPrice,
+            currency,
+            isSubscription,
+            interval: paymentInterval,
+            trialPeriodDays,
+          },
+          populate: true,
+        });
+        return updated;
+      }
+    } catch (error) {
+      console.log(error.response || error);
+      throw new ApplicationError(error.message);
+    }
+  }
+
 });
