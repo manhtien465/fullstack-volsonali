@@ -29,7 +29,8 @@ module.exports = ({ strapi }) => ({
     isSubscription,
     paymentInterval,
     trialPeriodDays,
-    productType
+    productType,
+    slug
   ) {
     try {
       // get access token
@@ -78,6 +79,7 @@ module.exports = ({ strapi }) => ({
               trialPeriodDays,
               paypalSubcriptionId: id,
               paypalLinks: links,
+              slug:slug
             },
             populate: true,
           });
@@ -99,7 +101,6 @@ module.exports = ({ strapi }) => ({
             url
           );
         const { id, status, links } = result;
-        console.log('order', links);
         // onsuccess create order store in database
         if (status === 'CREATED') {
           const create = await strapi.query('plugin::strapi-paypal.paypal-product').create({
@@ -159,7 +160,17 @@ module.exports = ({ strapi }) => ({
       throw new ApplicationError(error.message);
     }
   },
-
+  async findSlug(slug) {
+    try {
+      const response = await strapi
+        .query('plugin::strapi-paypal.paypal-product')
+        .findOne({ where: { slug }, populate: true });
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw new ApplicationError(error.message);
+    }
+  },
   async getPaypalCheckout(isSubscription, paypalOrderId, paypalSubcriptionId) {
     try {
       // get access token

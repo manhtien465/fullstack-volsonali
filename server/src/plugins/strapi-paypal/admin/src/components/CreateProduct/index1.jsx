@@ -5,7 +5,7 @@ import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
  const CreateProduct = ({ isVisible, handleClose, handleClickSave }) => {
   const [open, setOpen] = React.useState(false); 
   const [heading, setHeading] = useState('Product');
-    const [title, setTitle] = useState('');
+      const [title, setTitle] = useState('');
      const [price, setPrice] = useState();
      const [paymentType, setPaymentType] = useState('');
      const [isSubscription, setIsSubscription] = useState(false);
@@ -13,6 +13,7 @@ import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
      const [paymentInterval, setPaymentInterval] = useState('');
      const [trialPeriodDays, setTrialPeriodDays] = useState();
      const [productType, setProductType] = useState('');
+     const [slug, setSlug] = useState('');
      const [error, setError] = useState({
        title: '',
        price: '',
@@ -20,6 +21,7 @@ import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
        paymentType: '',
        paymentInterval: '',
        productType: '',
+       slug:"",
      });
    
      const handleChange = event => {
@@ -30,6 +32,14 @@ import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
          setError({ ...error, title: '' });
        }
      };
+     const handleChangeSlug = event => {
+      const { name, value } = event.target;
+  
+      if (name === 'title') {
+        setSlug(value);
+        setError({ ...error, slug: '' });
+      }
+    };
    
      const handleChangePaymentType = value => {
        setPaymentType(value);
@@ -144,6 +154,7 @@ import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
            paymentInterval,
            trialPeriodDays,
            productType,
+           slug,
          });
          setOpen(false)
          setTitle('');
@@ -220,6 +231,13 @@ import { Modal,Field,Button ,Typography,Flex,Box,SingleSelect,
             <Field.Root name="title" required error={error.title ? error.title : ''}>
             <Field.Label>Title</Field.Label>
             <Field.Input onChange={handleChange} />
+            </Field.Root>
+        </Grid.Item>
+
+        <Grid.Item col={6}>
+            <Field.Root name="slug" required error={error.slug ? error.slug : ''}>
+            <Field.Label>Slug</Field.Label>
+            <Field.Input onChange={handleChangeSlug} />
             </Field.Root>
         </Grid.Item>
 

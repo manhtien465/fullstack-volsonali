@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_layout_price_grid_payments",
+  "info": {
+    "displayName": "Price Grid Payment",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "priceCard": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.price-card"
+    }
+  }
+}

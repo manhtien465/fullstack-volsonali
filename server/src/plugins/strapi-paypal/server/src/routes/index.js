@@ -45,7 +45,7 @@ module.exports = [
     handler: 'paypalController.findProductById',
     config: {
       auth: false,
-      policies: ['plugin::strapi-paypal.apiToken'],
+      // policies: ['plugin::strapi-paypal.apiToken'],
     },
   },
   {

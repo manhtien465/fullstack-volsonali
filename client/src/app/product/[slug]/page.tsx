@@ -6,6 +6,7 @@ import { MarkdownText } from "@/components/custom/markdown-text";
 import { StrapiImage } from "@/components/custom/strapi-image";
 import { getBlogPostBySlug } from "@/data/loaders";
 import { BlockRenderer } from "@/components/block-renderer";
+import { getProductById } from "@/data/services/product";
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -18,8 +19,8 @@ export async function generateMetadata({
   const { isEnabled: isDraftMode } = await draftMode();
   const status = isDraftMode ? "draft" : "published";
 
-  const data = await getBlogPostBySlug(slug, status);
-  console.log("Post",data)
+  const data = await getProductById(slug);
+
   if (!data?.data?.[0]) {
     return {
       title: "Next.js Strapi Preview",
@@ -40,47 +41,21 @@ export default async function ProductPage({ params }: PageProps) {
   const slug = await resolveParams?.slug;
   const { isEnabled: isDraftMode } = await draftMode();
   const status = isDraftMode ? "draft" : "published";
-  const data = await getBlogPostBySlug(slug, status);
-  const post = data?.data[0];
+  const data = await getProductById(slug);
+  const product = data?.data;
 
-  if (!post) notFound();
+  if (!product) notFound();
 
-  const blocks = post?.blocks || [];
-
-  console.log(blocks, "blocks");
 
   return (
     <article>
       <div>
         <header className="container mx-auto my-10">
           <h1 className="text-6xl font-bold tracking-tighter sm:text-5xl mb-4">
-            {post.title}
+            {product.title}
           </h1>
-          <p className="text-muted-foreground">
-            Posted on {formatDate(post.publishedAt)} - {post.category.text}
-          </p>
-          <StrapiImage
-            src={post.image.url}
-            alt={post.image.alternativeText}
-            width={800}
-            height={600}
-            priority
-            className="w-full rounded-lg mt-8"
-          />
-        </header>
-      </div>
-
-      {post.content && (
-        <div className="container mx-auto max-w-4xl text-base leading-7">
-          <MarkdownText content={post.content} />
-        </div>
-      )}
-
-      {blocks && (
-        <div className="container mx-auto max-w-4xl text-base leading-7">
-          <BlockRenderer blocks={blocks} />
-        </div>
-      )}
+          </header>
+          </div>
     </article>
   );
 }

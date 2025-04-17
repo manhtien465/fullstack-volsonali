@@ -64,6 +64,10 @@ export function Header({ data,user }: Readonly<HeaderProps>) {
             </Button>
           </div>
         )}
+        <div className="hidden md:block">
+         <ThemeToggle />
+        </div>
+          
        {/* Button Signin */}
         {user && <Popover>
           <PopoverTrigger asChild>
@@ -77,7 +81,7 @@ export function Header({ data,user }: Readonly<HeaderProps>) {
           </PopoverContent>
         </Popover>}
           
-        <ThemeToggle />
+       
       </div>
       <MobileNavbar>
         <div className="rounded-b-lg bg-background py-4 container text-foreground shadow-xl">
@@ -92,7 +96,7 @@ export function Header({ data,user }: Readonly<HeaderProps>) {
               </Link>
             ))}
 
-            {cta && (
+            {cta && !user && (
               <Button asChild size="lg" className="mt-2 w-full">
                 <Link
                   href={cta.href}

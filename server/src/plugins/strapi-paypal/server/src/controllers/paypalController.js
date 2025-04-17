@@ -21,6 +21,7 @@ module.exports = {
         paymentInterval,
         trialPeriodDays,
         productType,
+        slug,
       } = ctx.request.body;
       const stripeProductResponse = await strapi
         .plugin("strapi-paypal")
@@ -32,7 +33,8 @@ module.exports = {
           isSubscription,
           paymentInterval,
           trialPeriodDays,
-          productType
+          productType,
+          slug
         );
       ctx.send(stripeProductResponse, 200);
     } catch (error) {
@@ -73,6 +75,7 @@ module.exports = {
       };
     }
   },
+  
   async getPaypalCheckout(ctx) {
     try {
       const { id } = ctx.params;
