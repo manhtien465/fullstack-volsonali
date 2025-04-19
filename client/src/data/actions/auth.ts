@@ -122,7 +122,7 @@ export async function loginUserAction(prevState: any, formData: FormData) {
 
   const cookieStore = await cookies();
   cookieStore.set("jwt", responseData.jwt, config);
-  redirect("/dashboard");
+  redirect("/");
 }
 
 export async function logoutAction() {
