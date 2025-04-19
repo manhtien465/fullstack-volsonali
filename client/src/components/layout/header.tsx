@@ -21,7 +21,6 @@ interface HeaderProps {
 export function Header({ data,user }: Readonly<HeaderProps>) {  
   if (!data) return null;
   const { logoText, navItems, cta } = data;
-  console.log("aaa",user, cta)
   return (
     <header className="container flex items-center justify-between gap-10 py-4">
       <Link href="/" className="flex items-center gap-3">

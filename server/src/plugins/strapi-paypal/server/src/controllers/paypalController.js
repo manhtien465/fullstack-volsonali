@@ -9,7 +9,7 @@ module.exports = {
     .plugin("strapi-paypal")
     .service("paypalService")
     .createOrderPaypal(id);
-  ctx.send(response, 200);
+    ctx.send(response, 200);
   },
   async createProduct(ctx) {
     try {

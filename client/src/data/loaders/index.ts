@@ -53,6 +53,13 @@ export async function getLandingPage() {
               },
             },
           },
+          "layout.price-grid-payment": {
+            populate: {
+              priceCard: {
+                populate: "*",
+              },
+            },
+          },
         },
       },
     },

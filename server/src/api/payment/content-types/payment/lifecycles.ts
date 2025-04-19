@@ -14,7 +14,7 @@ export default {
         };
     
       try {
-        await sendTelegramMessage(body)
+        await sendTelegramMessage(result)
       } catch (err) {
         console.error('Webhook failed:', err);
       }
