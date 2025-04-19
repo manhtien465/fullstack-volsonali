@@ -26,8 +26,8 @@ export default () => ({
     enabled: true,
     resolve: './src/plugins/strapi-paypal'
   },
-  'aa': {
-    enabled: true,
-    resolve: './src/plugins/aa'
-  },
+  // 'aa': {
+  //   enabled: true,
+  //   resolve: './src/plugins/aa'
+  // },
 });
