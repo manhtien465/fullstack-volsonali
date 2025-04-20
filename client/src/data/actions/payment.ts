@@ -6,15 +6,16 @@ import { redirect } from "next/navigation";
 import { getAuthToken } from "../services/get-auth-token";
 
 export async function createNewPayment(price: number) {
-    try {
-        const authToken = await getAuthToken();
-        if (!authToken) {
-            return redirect("/signin");
-        }
-        await createPayment(price);
-        redirect("/thank-you");
-    } catch (error) {
-        throw new Error("Error create new payment");
+    const authToken = await getAuthToken();
+    if (!authToken) {
+      redirect("/signin");
     }
-
-}
+  
+    try {
+      await createPayment(price);
+    } catch (e) {
+      throw new Error("Failed to create payment");
+    }
+  
+    redirect("/thank-you");
+  }
