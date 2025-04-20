@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  lazyblog:
+    build: .
+    ports:
+      - "1338:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
