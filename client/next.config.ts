@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "motivated-health-e41c7505c5.media.strapiapp.com",
+        hostname: "lazyblogadmin.productminting.com",
       },
     ],
   },
