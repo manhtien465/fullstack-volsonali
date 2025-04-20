@@ -60,8 +60,8 @@ export default async function SinglePost({ params }: PageProps) {
             Posted on {formatDate(post.publishedAt)} - {post.category.text}
           </p>
           <StrapiImage
-            src={post.image.url}
-            alt={post.image.alternativeText}
+            src={post.image?.url}
+            alt={post.image?.alternativeText}
             width={800}
             height={600}
             priority

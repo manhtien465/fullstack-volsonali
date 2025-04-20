@@ -14,6 +14,8 @@ type ComponentType =
   | "layout.content-with-image"   
   | "layout.price-grid"
   | "layout.price-grid-payment"
+  | "layout.image-carousel"
+
   | "blocks.video"
   | "blocks.text";
 
@@ -32,7 +34,18 @@ export interface NavLink {
   isPrimary: boolean;
 }
 
-export type Block = HeroProps | CardGridProps | SectionHeadingProps | ContentWithImageProps | PriceGridProps | VideoProps | TextProps | PriceGridPaymentProps;
+export type Block = 
+HeroProps | 
+CardGridProps |
+ SectionHeadingProps |
+  ContentWithImageProps |
+   PriceGridProps |
+    VideoProps | 
+    TextProps |
+     PriceGridPaymentProps |
+     ImageCarouselProps
+     
+     ;
 
 export interface HeroProps extends Base<"layout.hero"> {
   heading: string;
@@ -118,4 +131,23 @@ export interface VideoProps extends Base<"blocks.video"> {
 
 export interface TextProps extends Base<"blocks.text"> {
   content: string;
+}
+
+
+export interface ImageCarouselProps extends Base<"layout.image-carousel"> {
+  width:number,
+  height:number,
+  imageItems:{
+    id: number;
+    title: string
+    description: string
+    image: {
+      url: string;
+      alternativeText: string | null;
+      name: string;
+    };
+    width:number,
+    height:number,
+    link:NavLink
+ }[]
 }

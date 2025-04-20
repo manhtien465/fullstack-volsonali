@@ -3,16 +3,18 @@
 
 import { createPayment } from "@/data/services/payment";
 import { redirect } from "next/navigation";
-import { getUserMeLoader } from "../services/user";
+import { getAuthToken } from "../services/get-auth-token";
 
 export async function createNewPayment(price: number) {
     try {
-        const me= await  getUserMeLoader()
+        const authToken = await getAuthToken();
+        if (!authToken) {
+            return redirect("/signin");
+        }
         await createPayment(price);
         redirect("/thank-you");
     } catch (error) {
-        console.error("Payment creation failed:", error);
-        throw error; // Or redirect to an error page
+        throw new Error("Error create new payment");
     }
-  
+
 }

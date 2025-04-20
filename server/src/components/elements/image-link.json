@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_elements_image_links",
+  "info": {
+    "displayName": "Image Link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
+    },
+    "width": {
+      "type": "decimal"
+    },
+    "height": {
+      "type": "integer"
+    }
+  }
+}

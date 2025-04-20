@@ -58,6 +58,7 @@ const Text = lazy(() => import("@/components/block-renderer/blocks/text").then((
 const PricingPayment = lazy(() =>
   import("@/components/block-renderer/layout/pricing-payment").then((mod) => ({ default: mod.PricingPayment }))
 );
+const ImageCarousel = lazy(() => import("@/components/block-renderer/layout/image-carousel").then((mod) => ({ default: mod.ImageCarousel })));
 
 function blockRenderer(block: Block, index: number) {
   switch (block.__component) {
@@ -73,6 +74,8 @@ function blockRenderer(block: Block, index: number) {
       return <Pricing key={index} {...block} />;
     case "layout.price-grid-payment":
       return <PricingPayment key={index} {...block} />;
+    case "layout.image-carousel":
+      return <ImageCarousel key={index} {...block} />;
     case "blocks.video":
       return <Video key={index} {...block} />;
     case "blocks.text":

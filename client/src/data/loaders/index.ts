@@ -75,6 +75,9 @@ export async function getAllPagesSlugs() {
 }
 
 export async function getPageBySlug(slug: string, status: string) {
+  try {
+    
+  
   const page = await sdk.collection("pages").find({
     populate: {
       blocks: {
@@ -105,6 +108,20 @@ export async function getPageBySlug(slug: string, status: string) {
               },
             },
           },
+          "layout.image-carousel": {
+            populate: {
+              imageItems: {
+                populate: {
+                  image: {
+                    fields: ["url", "alternativeText", "name"],
+                  },
+                  link: {
+                    populate: "*",
+                  },
+                },
+              },
+            }
+          },
         },
       },
     },
@@ -114,6 +131,9 @@ export async function getPageBySlug(slug: string, status: string) {
     status: status as "draft" | "published" | undefined,
   });
   return page;
+} catch (error) {
+    console.log('e',error)
+}
 }
 
 export async function getCategories() {

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_layout_image_carousels",
+  "info": {
+    "displayName": "Image Carousel",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "imageItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.image-link"
+    },
+    "width": {
+      "type": "decimal"
+    },
+    "height": {
+      "type": "decimal"
+    }
+  }
+}

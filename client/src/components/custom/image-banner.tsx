@@ -5,19 +5,34 @@ interface StrapiImageProps {
   src: string;
   alt: string | null;
   className?: string;
+  width?: number;
+  height?: number;
   [key: string]: string | number | boolean | undefined | null | any;
 }
 
-export function StrapiImage({
+export function ImageBanner({
   src,
   alt,
   className,
+  width = 1400,
+  height = 500, 
   ...rest
 }: Readonly<StrapiImageProps>) {
   const imageUrl = getStrapiMedia(src);
   if (!imageUrl) return null;
 
-  return <Image src={imageUrl} alt={alt || "No alt text provided."} className={className} {...rest} />;
+  return (
+    <div className="relative w-full" style={{ height: `${height}px` }}>
+      <Image
+        src={imageUrl}
+        alt={alt || "No alt text provided."}
+        className={className}
+        width={width}
+        height={height}
+        {...rest}
+      />
+    </div>
+  );
 }
 
 export function getStrapiMedia(url: string | null) {
