@@ -6,4 +6,5 @@ services:
       - "1338:3000"
     environment:
       - NODE_ENV=production
+      - STRAPI_BASE_URL=https://lazyblogadmin.productminting.com
     restart: unless-stopped
