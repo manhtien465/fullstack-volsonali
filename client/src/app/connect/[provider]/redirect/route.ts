@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
 import { getStrapiURL } from "@/lib/utils";
+import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
 
 const config = {
   maxAge: 60 * 60 * 24 * 7, // 1 week
@@ -35,6 +35,8 @@ export async function GET(
 
   const cookieStore = await cookies();
   cookieStore.set("jwt", data.jwt, config);
-
-  return NextResponse.redirect(new URL("/dashboard", request.url));
+  const redirectHost = process.env.HOST ?? "localhost:3000"; 
+  const redirectProtocol = process.env.REDIRECT_PROTOCOL ?? "https";
+  const redirectUrl = `${redirectProtocol}://${redirectHost}/dashboard`;
+  return NextResponse.redirect(redirectUrl);
 }

@@ -15,7 +15,9 @@ export default {
             console.log('START CRON JOB: BACKUP DATABASE');
     
             const dbPath = path.resolve(__dirname, '../../.tmp/data.db'); // default SQLite path in Strapi
-            const backupDir = path.resolve(__dirname, '../../backups');
+            // const backupDir = path.resolve(__dirname, '../../backups');
+            const backupDir = process.env.BACKUP_DIR || '/var/backups/strapi';
+
             const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
             const backupFile = path.join(backupDir, `backup-${timestamp}.sqlite`);
     
@@ -36,7 +38,7 @@ export default {
 
       },
       options: {
-        rule: "0 1 * * * *",
+        rule: "0 1 * * 1",
       },
     },
   };
