@@ -1,5 +1,6 @@
+'use server'
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn, getStrapiURLInClient } from "@/lib/utils";
 
 import { getStrapiURL } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -18,7 +19,7 @@ export function ProviderAuthLink({
   readonly buttonText: string;
   readonly children: React.ReactNode;
 }) {
-  const backendUrl = getStrapiURL();
+  const backendUrl = getStrapiURLInClient();
   const path = "/api/connect/" + providerName;
   const url = new URL(backendUrl + path);
 
