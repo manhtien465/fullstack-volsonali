@@ -1,12 +1,8 @@
-'use server'
 import React from "react";
 import { cn, getStrapiURLInClient } from "@/lib/utils";
 
 import { getStrapiURL } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-
-
-
 
 
 import Link from "next/link";
