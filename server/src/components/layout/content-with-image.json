@@ -1,7 +1,8 @@
 {
   "collectionName": "components_layout_content_with_images",
   "info": {
-    "displayName": "Content With Image"
+    "displayName": "Content With Image",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -15,18 +16,23 @@
       "type": "text"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "reverse": {
       "type": "boolean",
       "default": false
+    },
+    "displayText": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

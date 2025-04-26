@@ -5,16 +5,17 @@ type Image = {
   url: string;
   alternativeText: string | null;
   name: string;
-}   
+}
 
 type ComponentType =
   | "layout.hero"
   | "layout.card-grid"
   | "layout.section-heading"
-  | "layout.content-with-image"   
+  | "layout.content-with-image"
   | "layout.price-grid"
   | "layout.price-grid-payment"
   | "layout.image-carousel"
+  | "layout.content-with-video"
 
   | "blocks.video"
   | "blocks.text";
@@ -34,18 +35,18 @@ export interface NavLink {
   isPrimary: boolean;
 }
 
-export type Block = 
-HeroProps | 
-CardGridProps |
- SectionHeadingProps |
+export type Block =
+  HeroProps |
+  CardGridProps |
+  SectionHeadingProps |
   ContentWithImageProps |
-   PriceGridProps |
-    VideoProps | 
-    TextProps |
-     PriceGridPaymentProps |
-     ImageCarouselProps
-     
-     ;
+  PriceGridProps |
+  VideoProps |
+  TextProps |
+  PriceGridPaymentProps |
+  ImageCarouselProps |
+  ContentWithVideoProps 
+  ;
 
 export interface HeroProps extends Base<"layout.hero"> {
   heading: string;
@@ -107,7 +108,7 @@ export interface PriceGridPaymentProps extends Base<"layout.price-grid-payment">
     heading: string;
     description: string;
     price: string;
-    priceTitle:string
+    priceTitle: string
     selected: boolean;
     feature: {
       id: string;
@@ -117,16 +118,27 @@ export interface PriceGridPaymentProps extends Base<"layout.price-grid-payment">
   }[];
 }
 
-export interface VideoProps extends Base<"blocks.video"> {
+export interface VideoOnlyProps  {
   title: string;
   description: string;
   videoUrl: string;
+  isYoutubeVideo:string,
   video: {
     videoId: string;
     start: string;
     end: string;
   },
   image: Image;
+  videoInternal: {
+    id: string;
+    documentId: string;
+    url: string;
+    alternativeText: string | null;
+    name: string;
+  }
+}
+
+export interface VideoProps extends Base<"blocks.video"> ,VideoOnlyProps{
 }
 
 export interface TextProps extends Base<"blocks.text"> {
@@ -135,9 +147,9 @@ export interface TextProps extends Base<"blocks.text"> {
 
 
 export interface ImageCarouselProps extends Base<"layout.image-carousel"> {
-  width:number,
-  height:number,
-  imageItems:{
+  width: number,
+  height: number,
+  imageItems: {
     id: number;
     title: string
     description: string
@@ -146,8 +158,19 @@ export interface ImageCarouselProps extends Base<"layout.image-carousel"> {
       alternativeText: string | null;
       name: string;
     };
-    width:number,
-    height:number,
-    link:NavLink
- }[]
+    width: number,
+    height: number,
+    link: NavLink
+  }[]
+}
+
+
+export interface ContentWithVideoProps extends Base<"layout.content-with-video"> {
+  reverse: boolean;
+  video: VideoOnlyProps
+  heading: string;
+  subHeading: string;
+  text: string;
+  isDisplayText:boolean
+  
 }

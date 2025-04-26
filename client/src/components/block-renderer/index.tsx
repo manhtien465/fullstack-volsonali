@@ -60,6 +60,8 @@ const PricingPayment = lazy(() =>
 );
 const ImageCarousel = lazy(() => import("@/components/block-renderer/layout/image-carousel").then((mod) => ({ default: mod.ImageCarousel })));
 
+const ContentWithVideo = lazy(() => import("@/components/block-renderer/layout/content-with-video").then((mod) => ({ default: mod.ContentWithVideo })));
+
 function blockRenderer(block: Block, index: number) {
   switch (block.__component) {
     case "layout.hero":
@@ -76,6 +78,8 @@ function blockRenderer(block: Block, index: number) {
       return <PricingPayment key={index} {...block} />;
     case "layout.image-carousel":
       return <ImageCarousel key={index} {...block} />;
+    case "layout.content-with-video":
+      return <ContentWithVideo key={index} {...block} />;
     case "blocks.video":
       return <Video key={index} {...block} />;
     case "blocks.text":

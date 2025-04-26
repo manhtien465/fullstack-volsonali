@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_layout_content_with_videos",
+  "info": {
+    "displayName": "Content With Video",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "video": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.video"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "subHeading": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "reverse": {
+      "type": "boolean"
+    },
+    "isDisplayText": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

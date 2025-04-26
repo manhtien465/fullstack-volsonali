@@ -60,6 +60,21 @@ export async function getLandingPage() {
               },
             },
           },
+         "layout.content-with-video": {
+          populate: {
+            video: {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText", "name"],
+                },
+                videoInternal:{
+                  fields: ["url", "alternativeText", "name"],
+                },
+              },
+              fields: "*",
+            },
+          },
+        },
         },
       },
     },
