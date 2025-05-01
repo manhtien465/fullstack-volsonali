@@ -75,6 +75,28 @@ export async function getLandingPage() {
             },
           },
         },
+        "animation-elements.circular-gallery": {
+          populate: {
+            items: {
+              fields: ["url", "alternativeText", "name",'caption' ]
+            }
+          }
+          // populate: "*",
+        },
+        "animation-elements.bounce-cards":{
+          populate: {
+            images: {
+              fields: ["url", "alternativeText", "name",'caption' ]
+            }
+          }
+        },
+        "animation-elements.grid-motion":{
+          populate: {
+            items: {
+              fields: ["url"]
+            }
+          }
+        }
         },
       },
     },
@@ -137,6 +159,12 @@ export async function getPageBySlug(slug: string, status: string) {
               },
             }
           },
+          "animation-elements.circular-gallery": {
+            populate: "*",
+          },
+          "animation-elements.bounce-cards":{
+            populate: "*",
+          }
         },
       },
     },

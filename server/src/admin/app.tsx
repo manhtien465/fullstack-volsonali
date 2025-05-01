@@ -34,6 +34,12 @@ export default {
       // 'zh-Hans',
       // 'zh',
     ],
+    translations: {
+      en: {
+        "Auth.form.welcome.title": "Welcome to Lazy Blog!",
+        "Auth.form.welcome.subtitle": "Log in to Lazy Blog!",
+      },
+    }
   },
   bootstrap(app: StrapiApp) {
     console.log(app);

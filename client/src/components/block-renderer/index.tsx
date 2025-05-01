@@ -62,6 +62,14 @@ const ImageCarousel = lazy(() => import("@/components/block-renderer/layout/imag
 
 const ContentWithVideo = lazy(() => import("@/components/block-renderer/layout/content-with-video").then((mod) => ({ default: mod.ContentWithVideo })));
 
+const BounceCardsLayout = lazy(() => import("@/components/block-renderer/layout/bounce-cards").then((mod) => ({ default: mod.BounceCardsLayout })));
+
+const CircularGalleryLayout = lazy(() => import("@/components/block-renderer/layout/circular-gallery").then((mod) => ({ default: mod.CircularGalleryLayout })));
+
+const GridMotionLayout = lazy(() => import("@/components/block-renderer/layout/grid-motion").then((mod) => ({ default: mod.GridMotionLayout })));
+
+const StackLayout = lazy(() => import("@/components/block-renderer/layout/stack").then((mod) => ({ default: mod.StackLayout })));
+
 function blockRenderer(block: Block, index: number) {
   switch (block.__component) {
     case "layout.hero":
@@ -84,6 +92,14 @@ function blockRenderer(block: Block, index: number) {
       return <Video key={index} {...block} />;
     case "blocks.text":
       return <Text key={index} {...block} />;
+    case "animation-elements.bounce-cards":
+      return <BounceCardsLayout key={index} {...block} />;
+    case "animation-elements.circular-gallery":
+      return <CircularGalleryLayout key={index} {...block} />;
+    case "animation-elements.grid-motion":
+      return <GridMotionLayout key={index} {...block} />;
+    case "animation-elements.stack":
+      return <StackLayout key={index} {...block} />;
     default:
       return null;
   }

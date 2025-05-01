@@ -7,7 +7,6 @@ import { Video } from "../blocks/video";
 
 export function ContentWithVideo(data: Readonly<ContentWithVideoProps>) {
   if (!data ) return null;
-  console.log("data",data)
   const { reverse, video, heading, subHeading, text,isDisplayText } = data;
   const revereStyle = reverse ? "md:flex-row-reverse" : "md:flex-row";
 

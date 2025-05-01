@@ -45,7 +45,8 @@ export type Block =
   TextProps |
   PriceGridPaymentProps |
   ImageCarouselProps |
-  ContentWithVideoProps 
+  ContentWithVideoProps |
+  any
   ;
 
 export interface HeroProps extends Base<"layout.hero"> {

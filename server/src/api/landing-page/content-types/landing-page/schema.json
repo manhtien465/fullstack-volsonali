@@ -27,7 +27,10 @@
         "layout.content-with-image",
         "layout.price-grid",
         "layout.price-grid-payment",
-        "layout.content-with-video"
+        "layout.content-with-video",
+        "animation-elements.circular-gallery",
+        "animation-elements.bounce-cards",
+        "animation-elements.grid-motion"
       ]
     }
   }

@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_animation_elements_circular_galleries",
+  "info": {
+    "displayName": "Circular Gallery",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "bend": {
+      "type": "integer",
+      "default": 3,
+      "required": true
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#ffffff",
+      "unique": false,
+      "required": true,
+      "regex": "#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})"
+    },
+    "borderRadius": {
+      "type": "decimal"
+    },
+    "height": {
+      "type": "decimal",
+      "default": 600,
+      "required": true
+    }
+  }
+}

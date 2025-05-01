@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_animation_elements_stacks",
+  "info": {
+    "displayName": "Stack"
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "randomRotation": {
+      "type": "boolean",
+      "default": false
+    },
+    "sensitivity": {
+      "type": "integer"
+    },
+    "sendToBackOnClick": {
+      "type": "boolean",
+      "default": false
+    },
+    "width": {
+      "type": "decimal",
+      "default": 200
+    },
+    "height": {
+      "type": "decimal"
+    }
+  }
+}

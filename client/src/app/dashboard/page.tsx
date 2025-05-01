@@ -6,6 +6,9 @@ export default function DashboardRoute() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-muted">
       <h1>Dashboard Route Placeholder</h1>
       <LogoutButton />
+      <div style={{ height: '600px', position: 'relative' }}>
+     
+    </div>
     </div>
   )
 }

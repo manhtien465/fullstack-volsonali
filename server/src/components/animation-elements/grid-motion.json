@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_animation_elements_grid_motions",
+  "info": {
+    "displayName": "Grid Motion"
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "gradientColor": {
+      "type": "string",
+      "default": "red",
+      "required": true
+    }
+  }
+}

@@ -31,7 +31,10 @@
         "layout.card-grid",
         "layout.price-grid",
         "layout.image-carousel",
-        "layout.content-with-video"
+        "layout.content-with-video",
+        "animation-elements.grid-motion",
+        "animation-elements.circular-gallery",
+        "animation-elements.bounce-cards"
       ]
     },
     "seo": {

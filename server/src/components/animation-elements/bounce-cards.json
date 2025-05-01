@@ -1,0 +1,57 @@
+{
+  "collectionName": "components_animation_elements_bounce_cards",
+  "info": {
+    "displayName": "Bounce Cards",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "containerWidth": {
+      "type": "integer",
+      "default": 500
+    },
+    "containerHeight": {
+      "type": "decimal",
+      "default": 250
+    },
+    "animationDelay": {
+      "type": "decimal",
+      "default": 1,
+      "required": true
+    },
+    "animationStagger": {
+      "type": "decimal",
+      "required": true,
+      "default": 0.08
+    },
+    "easeType": {
+      "type": "string",
+      "default": "elastic.out(1, 0.5)",
+      "required": true
+    },
+    "transformStyles": {
+      "type": "json",
+      "required": true
+    },
+    "enableHover": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "defaultEaseType": {
+      "type": "string",
+      "default": " [   \"rotate(5deg) translate(-150px)\",   \"rotate(0deg) translate(-70px)\",   \"rotate(-5deg)\",   \"rotate(5deg) translate(70px)\",   \"rotate(-5deg) translate(150px)\" ]"
+    }
+  }
+}
