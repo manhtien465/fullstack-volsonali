@@ -47,7 +47,7 @@ export function Hero(data: Readonly<HeroProps>) {
       </div>
       <div className="relative flex-1">
         <StrapiImage
-          src={image.url}
+          src={image?.url}
           alt="SaaS Dashboard"
           width={1000}
           height={698}
