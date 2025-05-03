@@ -1,0 +1,21 @@
+# Use Debian-based Node.js image instead of Alpine
+FROM node:18
+
+# Set working directory
+WORKDIR /srv/app
+
+# Install dependencies
+COPY package*.json ./
+# RUN npm install
+
+# Copy application files
+COPY . .
+
+# Build admin panel
+RUN npm run build
+
+# Expose Strapi port
+EXPOSE 1337
+
+# Start Strapi
+CMD ["npm", "start"]

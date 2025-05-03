@@ -7,7 +7,7 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "start:prod":"pm2 start ecosystem.config.js",
-    "build": "NODE_OPTIONS='--max-old-space-size=4096' strapi build",
+    "build": "NODE_OPTIONS='--max-old-space-size=8192' strapi build",
     "strapi": "strapi",
     "deploy": "strapi deploy"
   },
