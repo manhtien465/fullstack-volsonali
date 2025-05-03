@@ -8,7 +8,8 @@ services:
       - "1337:1337"
     volumes:
       - ./:/srv/app
-      - ./tmp:/srv/app/.tmp
-      - ./public:/srv/app/public
+      - ./.tmp:/srv/app/.tmp
+      - ./public/uploads:/srv/app/public/uploads
+      - ./backups:/var/backups/strapi  # <-- Mount for backup
     environment:
       - NODE_ENV=production
