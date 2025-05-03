@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "template_json_pages",
+  "info": {
+    "singularName": "template-json-page",
+    "pluralName": "template-json-pages",
+    "displayName": "Template JSON Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "json": {
+      "type": "json"
+    }
+  }
+}
