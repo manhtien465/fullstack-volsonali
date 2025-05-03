@@ -9,5 +9,6 @@ services:
     volumes:
       - ./:/srv/app
       - ./tmp:/srv/app/.tmp
+      - ./public:/srv/app/public
     environment:
       - NODE_ENV=production
