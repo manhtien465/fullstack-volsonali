@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_layout_jsons",
+  "info": {
+    "displayName": "Json"
+  },
+  "options": {},
+  "attributes": {
+    "json": {
+      "type": "json"
+    }
+  }
+}

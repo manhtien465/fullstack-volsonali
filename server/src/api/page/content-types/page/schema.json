@@ -34,7 +34,8 @@
         "layout.content-with-video",
         "animation-elements.grid-motion",
         "animation-elements.circular-gallery",
-        "animation-elements.bounce-cards"
+        "animation-elements.bounce-cards",
+        "layout.json"
       ]
     },
     "seo": {

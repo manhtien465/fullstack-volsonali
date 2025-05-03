@@ -160,10 +160,28 @@ export async function getPageBySlug(slug: string, status: string) {
             }
           },
           "animation-elements.circular-gallery": {
-            populate: "*",
+            populate: {
+              items: {
+                fields: ["url", "alternativeText", "name",'caption' ]
+              }
+            }
           },
           "animation-elements.bounce-cards":{
-            populate: "*",
+            populate: {
+              images: {
+                fields: ["url", "alternativeText", "name",'caption' ]
+              }
+            }
+          },
+          "animation-elements.grid-motion":{
+            populate: {
+              items: {
+                fields: ["url"]
+              }
+            }
+          },
+          "layout.json":{
+              populate: "*",
           }
         },
       },
