@@ -7,7 +7,7 @@ export default ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
-  proxy: { koa: true},
+  proxy: true,
   cron: {
     enabled: true,
     tasks: cronTasks,
