@@ -16,7 +16,7 @@ export function ProviderAuthLink({
   readonly children: React.ReactNode;
 }) {
   const backendUrl = getStrapiURLInClient();
-  const path = "/api/connect/" + providerName;
+  const path = "/api/connect/" + providerName+ `?state=${process.env.NEXT_PUBLIC_URL_CALLBACK}`;
   const url = new URL(backendUrl + path);
 
   return (
