@@ -4,7 +4,8 @@
   "info": {
     "singularName": "template-json-page",
     "pluralName": "template-json-pages",
-    "displayName": "Template JSON Page"
+    "displayName": "Template JSON Page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,9 @@
   "attributes": {
     "json": {
       "type": "json"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }
