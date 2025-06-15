@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "category_htmls",
+  "info": {
+    "singularName": "category-html",
+    "pluralName": "category-htmls",
+    "displayName": "Category Html",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    }
+  }
+}
