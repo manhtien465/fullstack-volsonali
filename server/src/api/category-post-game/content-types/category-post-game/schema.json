@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "category_post_games",
+  "info": {
+    "singularName": "category-post-game",
+    "pluralName": "category-post-games",
+    "displayName": "Category Post Game",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    }
+  }
+}

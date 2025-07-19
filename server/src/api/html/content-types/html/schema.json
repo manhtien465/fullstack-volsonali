@@ -40,6 +40,37 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "screenshots": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "pros": {
+      "type": "json"
+    },
+    "cons": {
+      "type": "json"
+    },
+    "release_date": {
+      "type": "date"
+    },
+    "developer": {
+      "type": "string"
+    },
+    "plays": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "decimal"
+    },
+    "full_description": {
+      "type": "blocks"
     }
   }
 }

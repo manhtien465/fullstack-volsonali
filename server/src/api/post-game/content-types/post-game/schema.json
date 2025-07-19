@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "posts",
+  "collectionName": "post_games",
   "info": {
-    "singularName": "post",
-    "pluralName": "posts",
-    "displayName": "Post",
+    "singularName": "post-game",
+    "pluralName": "post-games",
+    "displayName": "Post Game",
     "description": ""
   },
   "options": {
@@ -16,7 +16,7 @@
       "type": "string"
     },
     "description": {
-      "type": "text"
+      "type": "string"
     },
     "slug": {
       "type": "uid",
@@ -27,7 +27,10 @@
       "multiple": false,
       "required": false,
       "allowedTypes": [
-        "images"
+        "images",
+        "files",
+        "videos",
+        "audios"
       ]
     },
     "content": {
@@ -36,26 +39,19 @@
     "category": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::category.category"
+      "target": "api::category-post-game.category-post-game"
     },
     "seo": {
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
     },
-    "blocks": {
-      "type": "dynamiczone",
-      "components": [
-        "blocks.video",
-        "blocks.text"
-      ]
-    },
-    "excerpt": {
-      "type": "text"
-    },
     "author": {
       "type": "string",
       "default": "Gaming Fun"
+    },
+    "excerpt": {
+      "type": "text"
     }
   }
 }

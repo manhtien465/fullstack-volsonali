@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "review_games",
+  "info": {
+    "singularName": "review-game",
+    "pluralName": "review-games",
+    "displayName": "Review Game",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "description": {
+      "type": "text"
+    },
+    "full_description": {
+      "type": "richtext"
+    },
+    "pros": {
+      "type": "json"
+    },
+    "cons": {
+      "type": "json"
+    },
+    "rating_info": {
+      "type": "json"
+    },
+    "rating": {
+      "type": "decimal"
+    }
+  }
+}
