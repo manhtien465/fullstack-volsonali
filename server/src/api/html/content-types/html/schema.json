@@ -42,14 +42,15 @@
       "targetField": "name"
     },
     "screenshots": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "pros": {
       "type": "json"
@@ -67,10 +68,14 @@
       "type": "string"
     },
     "rating": {
-      "type": "decimal"
+      "type": "decimal",
+      "default": 4
     },
     "full_description": {
       "type": "blocks"
+    },
+    "tags": {
+      "type": "json"
     }
   }
 }

@@ -62,6 +62,9 @@
         "tips-guides",
         "top-games"
       ]
+    },
+    "bagde": {
+      "type": "string"
     }
   }
 }

@@ -21,6 +21,15 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "game",
+        "tool"
+      ],
+      "default": "game",
+      "required": true
     }
   }
 }
