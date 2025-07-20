@@ -89,6 +89,10 @@
     },
     "full_description": {
       "type": "richtext"
+    },
+    "is_popular": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
