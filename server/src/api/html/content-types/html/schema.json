@@ -71,9 +71,6 @@
       "type": "decimal",
       "default": 4
     },
-    "full_description": {
-      "type": "blocks"
-    },
     "tags": {
       "type": "json"
     },
@@ -88,6 +85,9 @@
         "tool"
       ],
       "default": "game"
+    },
+    "full_description": {
+      "type": "richtext"
     }
   }
 }

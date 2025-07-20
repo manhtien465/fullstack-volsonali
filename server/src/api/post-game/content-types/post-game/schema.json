@@ -66,6 +66,10 @@
     },
     "bagde": {
       "type": "string"
+    },
+    "read_time": {
+      "type": "integer",
+      "default": 5
     }
   }
 }
