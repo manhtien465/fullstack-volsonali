@@ -82,7 +82,8 @@
       "type": "enumeration",
       "enum": [
         "game",
-        "tool"
+        "tool",
+        "review"
       ],
       "default": "game"
     },
