@@ -80,6 +80,14 @@
     "is_display_home": {
       "type": "boolean",
       "default": false
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "game",
+        "tool"
+      ],
+      "default": "game"
     }
   }
 }
