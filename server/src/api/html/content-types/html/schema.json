@@ -76,6 +76,10 @@
     },
     "tags": {
       "type": "json"
+    },
+    "is_display_home": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

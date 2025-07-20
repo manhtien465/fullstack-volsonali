@@ -30,6 +30,10 @@
       ],
       "default": "game",
       "required": true
+    },
+    "is_display_footer": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
