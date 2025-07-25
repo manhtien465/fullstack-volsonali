@@ -93,6 +93,9 @@
     "is_popular": {
       "type": "boolean",
       "default": false
+    },
+    "is_internal": {
+      "type": "boolean"
     }
   }
 }
