@@ -4,7 +4,8 @@
   "info": {
     "singularName": "adsense",
     "pluralName": "adsenses",
-    "displayName": "Adsense"
+    "displayName": "Adsense",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,6 +23,10 @@
     },
     "isExprired": {
       "type": "date"
+    },
+    "popupEnabled": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
