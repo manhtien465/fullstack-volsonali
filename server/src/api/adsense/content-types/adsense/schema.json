@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "adsenses",
+  "info": {
+    "singularName": "adsense",
+    "pluralName": "adsenses",
+    "displayName": "Adsense",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "adsensePublisherId": {
+      "type": "string"
+    },
+    "adsenseAdSlot": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "isExprired": {
+      "type": "date"
+    },
+    "popupEnabled": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
