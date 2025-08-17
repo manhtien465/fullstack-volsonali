@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gams",
+  "info": {
+    "singularName": "gam",
+    "pluralName": "gams",
+    "displayName": "Gam"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "networkCode": {
+      "type": "string"
+    },
+    "adUnitPath": {
+      "type": "string"
+    },
+    "expiredDate": {
+      "type": "datetime"
+    },
+    "domain": {
+      "type": "string"
+    }
+  }
+}
