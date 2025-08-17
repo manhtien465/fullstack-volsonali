@@ -119,6 +119,18 @@
     "lasting_appeal": {
       "type": "integer",
       "default": 4
+    },
+    "is_playstore_access": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_offical_site": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_appstore_access": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
