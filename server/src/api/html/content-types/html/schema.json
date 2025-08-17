@@ -120,17 +120,14 @@
       "type": "integer",
       "default": 4
     },
-    "is_playstore_access": {
-      "type": "boolean",
-      "default": false
+    "link_playstore": {
+      "type": "text"
     },
-    "is_offical_site": {
-      "type": "boolean",
-      "default": false
+    "link_offical_site": {
+      "type": "text"
     },
-    "is_appstore_access": {
-      "type": "boolean",
-      "default": false
+    "link_appstore": {
+      "type": "string"
     }
   }
 }
