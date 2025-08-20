@@ -128,6 +128,15 @@
     },
     "link_appstore": {
       "type": "string"
+    },
+    "group": {
+      "type": "enumeration",
+      "enum": [
+        "hot",
+        "oneline",
+        "new",
+        "more"
+      ]
     }
   }
 }
