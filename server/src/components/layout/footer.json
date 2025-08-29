@@ -1,7 +1,8 @@
 {
   "collectionName": "components_layout_footers",
   "info": {
-    "displayName": "Footer"
+    "displayName": "Footer",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -12,6 +13,28 @@
       "type": "component",
       "repeatable": true,
       "component": "elements.link"
+    },
+    "quickLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.link"
+    },
+    "bottomLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.link"
+    },
+    "copyright": {
+      "type": "text"
+    },
+    "text1": {
+      "type": "text"
+    },
+    "text2": {
+      "type": "string"
+    },
+    "text3": {
+      "type": "string"
     }
   }
 }

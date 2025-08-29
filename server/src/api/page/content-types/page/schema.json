@@ -35,7 +35,8 @@
         "animation-elements.grid-motion",
         "animation-elements.circular-gallery",
         "animation-elements.bounce-cards",
-        "layout.json"
+        "layout.json",
+        "layout.markdown"
       ]
     },
     "seo": {
