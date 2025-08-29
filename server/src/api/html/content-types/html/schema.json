@@ -99,6 +99,44 @@
     },
     "is_editor_choice": {
       "type": "boolean"
+    },
+    "is_popular_layout": {
+      "type": "boolean",
+      "default": false
+    },
+    "graph_sound": {
+      "type": "integer",
+      "default": 4
+    },
+    "control": {
+      "type": "integer",
+      "default": 4
+    },
+    "gamplay": {
+      "type": "integer",
+      "default": 5
+    },
+    "lasting_appeal": {
+      "type": "integer",
+      "default": 4
+    },
+    "link_playstore": {
+      "type": "text"
+    },
+    "link_offical_site": {
+      "type": "text"
+    },
+    "link_appstore": {
+      "type": "string"
+    },
+    "group": {
+      "type": "enumeration",
+      "enum": [
+        "hot",
+        "oneline",
+        "new",
+        "more"
+      ]
     }
   }
 }
