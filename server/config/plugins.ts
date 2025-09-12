@@ -22,10 +22,10 @@ export default () => ({
       },
     },
   },
-  'strapi-paypal': {
-    enabled: true,
-    resolve: './src/plugins/strapi-paypal'
-  },
+  // 'strapi-paypal': {
+  //   enabled: true,
+  //   resolve: './src/plugins/strapi-paypal'
+  // },
   // 'aa': {
   //   enabled: true,
   //   resolve: './src/plugins/aa'
