@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # Development App (with hot reload)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: gaming-fun
+    restart: unless-stopped
+    environment:
+      # SQLite Database (mounted volume)
+      DATABASE_URL: "file:/app/data/dev.db"
+      
+      # Admin Authentication
+      ADMIN_USERNAME: admin
+      ADMIN_PASSWORD: admin123
+      JWT_SECRET: dev-secret-key
+      
+      # App Settings
+      NODE_ENV: development
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount entire project for hot reload
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+      # Mount data directory for SQLite
+      - ./data:/app/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

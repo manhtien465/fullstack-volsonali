@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Ad Manager Rewarded Ad with Countdown</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+    }
+    #adContainer {
+      width: 640px;
+      height: 480px;
+      background: #000;
+      position: relative;
+    }
+    #videoElement {
+      width: 100%;
+      height: 100%;
+    }
+    #companionAd {
+      margin-top: 20px;
+      min-width: 468px;
+      min-height: 60px;
+      border: 1px solid #ccc;
+    }
+    #rewardMessage {
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+    }
+    #countdownOverlay {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    #skipButton {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 5px;
+      display: none;
+    }
+    #skipButton:hover {
+      background: #0056b3;
+    }
+  </style>
+  <!-- Load Google Publisher Tag (GPT) for companion banner -->
+  <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" crossorigin="anonymous"></script>
+  <!-- Load Google IMA SDK for video ads -->
+  <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+</head>
+<body>
+  <h1>Rewarded Video Ad with Countdown</h1>
+  <!-- Container for the video ad -->
+  <div id="adContainer">
+    <video id="videoElement" muted></video>
+    <div id="countdownOverlay">Ad: 30 seconds remaining</div>
+    <button id="skipButton">Skip Ad</button>
+  </div>
+  <!-- Container for the companion banner ad -->
+  <!-- /23314241852/rewarded/121221 -->
+  <div id="div-gpt-ad-1755624833468-0" style="min-width: 468px; min-height: 60px;">
+    <script>
+     window.googletag = window.googletag || {cmd: []};
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/23312725306/11111', [480, 320], 'div-gpt-ad-1755627442783-0').addService(googletag.companionAds()).addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().enableVideoAds();
+    googletag.companionAds().setRefreshUnfilledSlots(true);
+    googletag.enableServices();
+    googletag.display('div-gpt-ad-1755627442783-0'); 
+  });
+
+    </script>
+  </div>
+  <!-- Reward message display -->
+  <div id="rewardMessage"></div>
+
+  <script>
+    // Initialize IMA SDK for rewarded video ad
+    function initAds() {
+      var adDisplayContainer = new google.ima.AdDisplayContainer(document.getElementById('adContainer'), document.getElementById('videoElement'));
+      var adsLoader = new google.ima.AdsLoader(adDisplayContainer);
+      var countdownElement = document.getElementById('countdownOverlay');
+      var skipButton = document.getElementById('skipButton');
+      var countdownTimer;
+      var remainingTime = 30; // Assume 30-second ad duration
+
+      // Configure ad request
+      var adsRequest = new google.ima.AdsRequest();
+      adsRequest.adTagUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=480x320|640x480&iu=/23312725306/11111&ciu_szs=480x320&env=vp&impl=s&gdfp_req=1&output=vast&unviewed_position_start=1&url=' +
+        encodeURIComponent(window.location.href) +
+        '&description_url=' + encodeURIComponent(window.location.href) +
+        '&correlator=' + Date.now();
+
+      adsRequest.setAdWillAutoPlay(true);
+      adsRequest.setAdWillPlayMuted(false);
+
+      // Start countdown timer
+      function startCountdown() {
+        countdownTimer = setInterval(function() {
+          remainingTime--;
+          if (remainingTime >= 0) {
+            countdownElement.innerText = `Ad: ${remainingTime} seconds remaining`;
+          } else {
+            clearInterval(countdownTimer);
+          }
+        }, 1000);
+      }
+
+      // Handle ad loaded event
+      adsLoader.addEventListener(
+        google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED,
+        function(adsManagerLoadedEvent) {
+          var adsManager = adsManagerLoadedEvent.getAdsManager(document.getElementById('videoElement'));
+          adDisplayContainer.initialize();
+
+          // Start countdown when ad starts
+          adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, function() {
+            startCountdown();
+          });
+
+          // Handle skippable ads
+          adsManager.addEventListener(google.ima.AdEvent.Type.SKIPPABLE_STATE_CHANGED, function() {
+            if (adsManager.getAdSkippableState()) {
+              skipButton.style.display = 'block';
+              skipButton.onclick = function() {
+                adsManager.skip();
+                clearInterval(countdownTimer);
+                countdownElement.style.display = 'none';
+                skipButton.style.display = 'none';
+              };
+            }
+          });
+
+          // Handle ad completion for reward
+          adsManager.addEventListener(google.ima.AdEvent.Type.COMPLETE, function() {
+            clearInterval(countdownTimer);
+            countdownElement.style.display = 'none';
+            skipButton.style.display = 'none';
+            document.getElementById('rewardMessage').innerText = 'Reward granted! User completed the ad.';
+            console.log('User completed rewarded ad. Grant reward here (e.g., in-game currency).');
+          });
+
+          // Handle ad errors
+          adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, function(adErrorEvent) {
+            console.error('Ad error: ' + adErrorEvent.getError());
+            document.getElementById('rewardMessage').innerText = 'Ad failed to load.';
+            clearInterval(countdownTimer);
+            countdownElement.style.display = 'none';
+            skipButton.style.display = 'none';
+          });
+
+          // Clean up when all ads are done
+          adsManager.addEventListener(google.ima.AdEvent.Type.ALL_ADS_COMPLETED, function() {
+            adsManager.destroy();
+            clearInterval(countdownTimer);
+            countdownElement.style.display = 'none';
+            skipButton.style.display = 'none';
+          });
+
+          // Start the ad
+          try {
+            adsManager.init(640, 480, google.ima.ViewMode.NORMAL);
+            adsManager.start();
+          } catch (adError) {
+            console.error('AdsManager error: ' + adError);
+            document.getElementById('rewardMessage').innerText = 'Ad failed to initialize.';
+          }
+        },
+        false
+      );
+
+      // Handle ad loading errors
+      adsLoader.addEventListener(
+        google.ima.AdErrorEvent.Type.AD_ERROR,
+        function(adErrorEvent) {
+          console.error('AdsLoader error: ' + adErrorEvent.getError());
+          document.getElementById('rewardMessage').innerText = 'Ad failed to load.';
+          countdownElement.style.display = 'none';
+          skipButton.style.display = 'none';
+        },
+        false
+      );
+
+      // Request ads
+      adsLoader.requestAds(adsRequest);
+    }
+
+    // Initialize ads when the page loads
+    window.onload = function() {
+      initAds();
+    };
+  </script>
+</body>
+</html>
