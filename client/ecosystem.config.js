@@ -5,7 +5,7 @@ module.exports = {
       script: "node_modules/next/dist/bin/next", // chạy Next.js CLI
       args: "start -p 2346",           // cổng chạy (3000 mặc định)
       cwd: "./",                       // thư mục hiện tại (project root)
-      instances: "1",                // chạy cluster theo số CPU core
+      instances: "2",                // chạy cluster theo số CPU core
       exec_mode: "cluster",            // chạy dạng cluster
       watch: false,                    // tắt watch trong production
       autorestart: true,               // restart nếu crash
