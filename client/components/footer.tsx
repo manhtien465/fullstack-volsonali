@@ -1,12 +1,49 @@
 import Link from "next/link"
-import { Facebook, Twitter, Instagram, Youtube, BookOpen } from "lucide-react"
+import { Facebook, Twitter, Instagram, Youtube, BookOpen, Github } from "lucide-react"
 import { getCategories, getHtmlFooter } from "@/features/games/service/get-games"
 import { ETypeCategoryHtml } from "@/features/games/constants/data"
 
 export const revalidate = 60 * 60 * 24
 
-export default async function Footer() {
-  const { data } = await getHtmlFooter(1,undefined,true )
+
+interface Link {
+  href: string;
+  text: string;
+  isExternal: boolean;
+  isPrimary: boolean;
+}
+
+interface FooterProps {
+  data: {
+    text: string;
+    text1: string;
+    text2: string;
+    text3: string
+    text4:string;
+    copyright:string;
+    socialLinks: Link[];
+    quickLinks: Link[];
+    bottomLinks: Link[];
+  };
+}
+function renderIcon(text: string) {
+  switch (text) {
+    case "twitter":
+      return <Twitter />;
+    case "github":
+      return <Github />;
+    case "youtube":
+      return <Youtube />;
+      case "facebook":
+      return <Facebook />;
+     case "instagram":
+      return <Instagram />;
+    default:
+      return null;
+  }
+}
+export default async function Footer({ data }: Readonly<FooterProps>) {
+  const { data:categories } = await getHtmlFooter(1,undefined,true )
 
   return (
     <footer className="bg-gray-900 text-white relative overflow-hidden">
@@ -48,74 +85,31 @@ export default async function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold mb-4">Quick Links</h3>
+            <h3 className="font-semibold mb-4">{data.text2 ?? 'Quick Links'}</h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/games"
-                  className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1"
-                >
-                  HTML5 Games
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/reviews"
-                  className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1"
-                >
-                  Game Reviews
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/news"
-                  className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1"
-                >
-                  Gaming News
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-to"
-                  className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1"
-                >
-                  How-To Guides
-                </Link>
-              </li>
-              {/* <li>
-                <Link
-                  href="/guides"
-                  className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1"
-                >
-                  Knowledge Guides
-                </Link>
-              </li>
-              
-              <li>
-                <Link
-                  href="/tips-guides"
-                  className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1"
-                >
-                  Tips & Tricks
-                </Link>
-              </li> */}
-
-{/*                 <li>
-                <Link
-                  href="/tos"
-                  className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1"
-                >
-                  Tos
-                </Link>
-              </li> */}
+						{
+               data.quickLinks &&  data.quickLinks.map((el) => {
+                  return (
+                    <li key={el.text}>
+                      <Link
+                        href={el.href}
+                        className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1"
+                        target={el.isExternal ? "_blank" : "_self"}
+                      >
+                        {el.text}
+                      </Link>
+                    </li>
+                  )
+                })
+              }
             </ul>
           </div>
 
           {/* Categories */}
           <div>
-            <h3 className="font-semibold mb-4">Latest Reviews</h3>
+            <h3 className="font-semibold mb-4">{data.text3 ?? 'Latest Reviews'}</h3>
             <ul className="space-y-2 text-sm">
-              {data.map((category) => {
+              {categories && categories.map((category) => {
                 return (
                   <li key={category.documentId}>
                     <Link
@@ -132,55 +126,36 @@ export default async function Footer() {
 
           {/* Social Media */}
           <div>
-            <h3 className="font-semibold mb-4">Follow Us</h3>
+            <h3 className="font-semibold mb-4">{data.text4 ?? "Follow us"}</h3>
             <div className="flex space-x-4 mb-4">
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110 hover:text-blue-400"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110 hover:text-blue-400"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110 hover:text-blue-400"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110 hover:text-red-400"
-              >
-                <Youtube className="w-5 h-5" />
-              </a>
+						{data.socialLinks &&
+                data.socialLinks.map((link) => (
+                  <Link
+                    href={link.href}
+                   className="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110 hover:text-blue-400"
+                    key={link.text}
+                    target="_blank"
+                  >
+                    {renderIcon(link.text.toLowerCase())}
+                  </Link>
+                ))}
             </div>
-            <p className="text-gray-400 text-sm">Stay updated with the latest knowledge and insights!</p>
+            <p className="text-gray-400 text-sm">{data.text4 ?? 'Stay updated with the latest knowledge and insights!'}</p>
           </div>
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm">
-          <p>&copy; 2025 MegaGameFun. All rights reserved.</p>
+          <p>{ data.copyright ?? '© 2025 MegaGameFun. All rights reserved.'}</p>
           <div className="mt-2 space-x-4">
-            <Link href="/privacy-policy" className="hover:text-blue-400 transition-colors duration-200">
-              Privacy Policy
-            </Link>
-            <Link href="/disclaimer" className="hover:text-blue-400 transition-colors duration-200">
-              Disclaimer
-            </Link>
-            <Link href="/about" className="hover:text-blue-400 transition-colors duration-200">
-              About Us
-            </Link>
-            <Link href="/contact" className="hover:text-blue-400 transition-colors duration-200">
-              Contact
-            </Link>
-            <Link href="/tos" className="hover:text-blue-400 transition-colors duration-200">
-              Tos
-            </Link>
+					{data.bottomLinks.map((el)=>{
+              return(
+                <Link href={el.href} className="hover:text-blue-400 transition-colors duration-200"  key={el.text}
+                  target={el.isExternal ? "_blank" : "_self"}
+                  >
+                  {el.text}
+                </Link>
+              )
+            })}
           </div>
         </div>
       </div>

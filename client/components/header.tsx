@@ -11,8 +11,16 @@ import { usePathname, useRouter } from "next/navigation"
 import { useDebouncedCallback } from "use-debounce"
 import Logo from "./layout/logo"
 import { cn } from "@/lib/utils"
+import { NavLink } from "@/types"
 
-export default function Header() {
+interface HeaderProps {
+  data: {
+    logoText: string;
+    navItems: NavLink[];
+    cta: NavLink;
+  }
+}
+export default function Header({ data }: Readonly<HeaderProps>) {
   const router = useRouter()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const { scrollY, scrollDirection } = useScrollAnimation()
@@ -61,16 +69,16 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-6">
-            {navItems.map((item, index) => (
+            {data.navItems.map((item, index) => (
               <Link
-                key={item.name}
+                key={item.text}
                 href={item.href}
                 className={cn(
                   "text-gray-600 hover:text-cyan-600 transition-all duration-300 text-sm font-medium whitespace-nowrap relative group",
                   pathname === item.href ? "text-cyan-600" : "text-gray-700",
                 )}
               >
-                {item.name}
+                {item.text}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-600 transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
@@ -113,16 +121,16 @@ export default function Header() {
                     </div>
                   </div>
                   <nav className="flex flex-col space-y-3">
-                    {navItems.map((item) => (
+                    {data.navItems.map((item) => (
                       <Link
-                        key={item.name}
+                        key={item.text}
                         href={item.href}
                         className={cn(
                           "text-gray-600 hover:text-cyan-600 transition-all duration-300 py-2 px-3 rounded-lg hover:bg-gray-50",
                           pathname === item.href ? "text-cyan-600" : "text-gray-700",
                         )}
                       >
-                        {item.name}
+                        {item.text}
                       </Link>
                     ))}
                   </nav>
