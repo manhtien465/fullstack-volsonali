@@ -51,120 +51,19 @@ export default function RootLayout({
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NV7VDRT');
+})(window,document,'script','dataLayer','GTM-XXXXXX');
             `,
           }}
           
         />
        
-         <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.googletag = window.googletag || {cmd: []};
-            googletag.cmd.push(function() {
-              var mapping = googletag.sizeMapping()
-                .addSize([1024, 0], [[728, 90], [970, 90], [336, 280], [300, 250], [250, 250]])
-                .addSize([768, 0], [[728, 90], [336, 280], [300, 250], [250, 250]])
-                .addSize([0, 0], [[336, 280], [300, 250], [250, 250], [320, 50], [180, 150], [234, 60], [468, 60]])
-                .build();
-                var mappingLargeBanner = googletag.sizeMapping()
-                .addSize([1024, 0], [[1024, 768]])
-                .addSize([768, 0], [[728, 1024]])
-                .addSize([0, 0], [[320, 480]])
-                .build();
-              googletag.defineSlot(
-                '/23312725306/Display',
-                [[180, 150], 'fluid', [480, 320], [300, 250], [728, 90], [234, 60], [468, 60], [970, 90], [250, 250], [336, 280]],
-                'div-gpt-ad-1755424941447-0'
-              )
-              .defineSizeMapping(mapping)
-              .addService(googletag.pubads());
-              
-              googletag.defineSlot(
-                '/23312725306/Display',
-                [[300, 250], 'fluid'],
-                'div-gpt-ad-1755424941447-1'
-              ).defineSizeMapping(mapping).addService(googletag.pubads());
-
-                googletag.defineSlot(
-                '/23312725306/Display',
-                [[300, 250], 'fluid'],
-                'div-gpt-ad-1755424941447-2'
-              ).addService(googletag.pubads());
-
-               googletag.defineSlot(
-                '/23312725306/Display',
-                [[300, 250], 'fluid'],
-                'div-gpt-ad-1755424941447-3'
-              ).addService(googletag.pubads());
-
-
-               googletag.defineSlot(
-                '/23312725306/Display',
-                [[180, 150], 'fluid', [480, 320], [300, 250], [728, 90], [234, 60], [468, 60], [970, 90], [250, 250], [336, 280]],
-                'div-gpt-ad-1755424941447-4'
-              ).defineSizeMapping(mapping).addService(googletag.pubads());
-
-
-               googletag.defineSlot(
-                '/23312725306/Display',
-                [[180, 150], 'fluid', [480, 320], [300, 250], [728, 90], [234, 60], [468, 60], [970, 90], [250, 250], [336, 280]],
-                'div-gpt-ad-1755424941447-5'
-              ).defineSizeMapping(mapping).addService(googletag.pubads());
-
-
-               googletag.defineSlot(
-                '/23312725306/Display',
-                [[180, 150], 'fluid', [480, 320], [300, 250], [728, 90], [234, 60], [468, 60], [970, 90], [250, 250], [336, 280]],
-                'div-gpt-ad-1755424941447-6'
-              ).defineSizeMapping(mapping).addService(googletag.pubads());
-
-
-               googletag.defineSlot(
-                '/23312725306/Display',
-                [[180, 150], 'fluid', [480, 320], [300, 250], [728, 90], [234, 60], [468, 60], [970, 90], [250, 250], [336, 280]],
-                'div-gpt-ad-1755424941447-7'
-              ).defineSizeMapping(mapping).addService(googletag.pubads());
-
-                googletag.defineSlot(
-                '/23312725306/Display',
-                [[180, 150], 'fluid', [480, 320], [300, 250], [728, 90], [234, 60], [468, 60], [970, 90], [250, 250], [336, 280]],
-                'div-gpt-ad-1755424941447-8'
-              ).defineSizeMapping(mapping).addService(googletag.pubads());
-
-
-                googletag.defineSlot(
-                '/23312725306/Display',
-                [[180, 150], 'fluid', [480, 320], [300, 250], [728, 90], [234, 60], [468, 60], [970, 90], [250, 250], [336, 280]],
-                'div-gpt-ad-1755424941447-9'
-              ).defineSizeMapping(mapping).addService(googletag.pubads());
-
-               googletag.defineSlot(
-                '/23312725306/Display',
-                [[1024, 768], 'fluid', [768, 1024], [320,480]],
-                'div-gpt-ad-1755424941447-10'
-              ).defineSizeMapping(mappingLargeBanner).addService(googletag.pubads());
-
-               googletag.defineSlot(
-                '/23312725306/Display',
-                [[180, 150], 'fluid', [480, 320], [300, 250], [728, 90], [234, 60], [468, 60], [970, 90], [250, 250], [336, 280]],
-                'div-gpt-ad-1755424941447-11'
-              ).defineSizeMapping(mapping).addService(googletag.pubads());
-
-              googletag.pubads().enableSingleRequest();
-              googletag.pubads().collapseEmptyDivs();
-              googletag.enableServices();
-            });
-            `,
-          }}
-          
-        />
+        
         
         {/* <GAMScript /> */}
       </head>
       <body className={fontSans.variable}>
         {/* Google Tag manager */}
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NV7VDRT"
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXX"
         height="0" width="0" style={{display:"none",visibility:"hidden"}}></iframe></noscript>
         {/* Google Analytics */}
         <GoogleAnalytics />
