@@ -13,7 +13,7 @@ const Logo = () => {
           MegaGameFun
         </span>
       </div> */}
-      <Image src={'/logo.jpg'}width={200} height={200} alt="logo" />
+      <Image src={'/logo.jpg'} width={300} height={300} alt="logo" />
     </Link>
   )
 }
