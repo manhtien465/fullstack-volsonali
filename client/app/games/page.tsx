@@ -3,7 +3,7 @@ import BannerAd from "@/components/ads/BannerAd"
 import ResponsiveAd from "@/components/ads/ResponsiveAd"
 import MobileAd from "@/components/ads/MobileAd"
 import { StructuredData } from "@/components/seo/StructuredData"
-import { getHtmls } from "@/features/games/service/get-games"
+import { getHtmls, getHtmlsMain } from "@/features/games/service/get-games"
 import { ETypeHtml } from "@/features/games/constants/data"
 import DefaultLayout from "@/components/layout"
 import type { Metadata } from "next"
@@ -31,7 +31,7 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
   const page = Number.parseInt(params.page ?? "1")
   const queryString = params.keyword ?? ""
   const category = params.category ?? ""
-  const { data, meta } = await getHtmls(page, queryString, category, undefined, undefined, ETypeHtml.GAME)
+  const { data, meta } = await getHtmlsMain(page, queryString, category, undefined, undefined, ETypeHtml.GAME)
   const total = Number(meta?.pagination?.pageCount)
 
   const gamesPageSchema = {
@@ -61,12 +61,12 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
 
       <div className="max-w-[1860px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         {/* Header Banner Ad */}
-        
+
         <div className="hidden md:block mb-6 lg:mb-8">
           {/* <BannerAd adSlot="YOUR_GAMES_HEADER_AD_SLOT_ID" size="leaderboard" className="text-center" /> */}
           {/* <GAMBannerAd adUnitName="Display" className="text-center"  divId="div-gpt-ad-1755424941447-0" /> */}
           <GAMAdUnit adId="div-gpt-ad-1755424941447-6" style={{ minWidth: 180, minHeight: 60 }}></GAMAdUnit>
-          
+
         </div>
 
         {/* Header */}
@@ -91,9 +91,9 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
         {/* <PageSizeSelector pageSize={pageSize} onPageSizeChange={setPageSize} options={[12, 24, 48, 96]} /> */}
         {/* Mobile Ad */}
         <div className="flex md:hidden">
-        <GAMAdUnit adId="div-gpt-ad-1755424941447-7" style={{ minWidth: 180, minHeight: 60, marginBottom:"16px" }}></GAMAdUnit>
+          <GAMAdUnit adId="div-gpt-ad-1755424941447-7" style={{ minWidth: 180, minHeight: 60, marginBottom: "16px" }}></GAMAdUnit>
         </div>
-          
+
 
         {/* <GAMBannerAd adUnitName="Display"  divId="div-gpt-ad-1755424941447-0" /> */}
         {/* Games Grid */}
@@ -106,7 +106,7 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
 
         {/* Mid-Content Ad */}
         {/* <ResponsiveAd adSlot="YOUR_MID_CONTENT_AD_SLOT_ID" className="my-8 sm:my-12" /> */}
-        <GAMAdUnit adId="div-gpt-ad-1755424941447-8" style={{ minWidth: 180, minHeight: 60, marginBottom:"16px" }}></GAMAdUnit>
+        <GAMAdUnit adId="div-gpt-ad-1755424941447-8" style={{ minWidth: 180, minHeight: 60, marginBottom: "16px" }}></GAMAdUnit>
 
         {/* Interstitial Ad - Triggered by scroll */}
         {/* <GAMInterstitialAd adUnitId="interstitial" trigger="scroll" scrollPercentage={75} /> */}

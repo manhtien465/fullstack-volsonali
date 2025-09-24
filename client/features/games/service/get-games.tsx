@@ -1,5 +1,5 @@
 import sdk from "@/lib/sdk";
-import {  ETypeHtml } from "../constants/data";
+import { ETypeHtml } from "../constants/data";
 import { ESort } from "@/constants/sort";
 
 export async function getHtmlBySlug(slug: string, status: string) {
@@ -8,7 +8,7 @@ export async function getHtmlBySlug(slug: string, status: string) {
       image: {
         fields: ["url", "alternativeText", "name"],
       },
-       screenshots : {
+      screenshots: {
         fields: ["url", "alternativeText", "name"],
       },
       category_html: {
@@ -20,7 +20,7 @@ export async function getHtmlBySlug(slug: string, status: string) {
     },
     status: status as "draft" | "published" | undefined,
   });
-  return post ;
+  return post;
 }
 
 export async function getCategories(type?: string, isDisplayFooter?: boolean) {
@@ -39,14 +39,14 @@ export async function getHtmls(
   page: number,
   queryString: string,
   category: string,
-  isDisplayHomePage?:boolean,
-  pageSize?:number,
+  isDisplayHomePage?: boolean,
+  pageSize?: number,
   type?: ETypeHtml,
-  isPopular?:boolean,
-  sortBy?:ESort
+  isPopular?: boolean,
+  sortBy?: ESort
 ) {
   const posts = await sdk.collection("htmls").find({
-    fields: ["name", 'slug', 'is_editor_choice',"desc",'publishedAt'],
+    fields: ["name", 'slug', 'is_editor_choice', "desc", 'publishedAt'],
     populate: {
       image: {
         fields: ["url", "alternativeText", "name"],
@@ -60,13 +60,13 @@ export async function getHtmls(
     filters: {
       name: { $containsi: queryString },
       ...(category && { category_html: { slug: { $eq: category } } }),
-      ...(isDisplayHomePage && { is_display_home:  { $eq: isDisplayHomePage }  }),
-      ...(type && { type:  { $eq: type }  }),
-      ...(isPopular && { is_popular:  { $eq: isPopular }  }),
+      ...(isDisplayHomePage && { is_display_home: { $eq: isDisplayHomePage } }),
+      ...(type && { type: { $eq: type } }),
+      ...(isPopular && { is_popular: { $eq: isPopular } }),
     },
-   sort: sortBy ? [sortBy] : [ESort.PUBLISHNEWEST],
+    sort: sortBy ? [sortBy] : [ESort.PUBLISHNEWEST],
     pagination: {
-      pageSize: pageSize ?? 1000,
+      pageSize: pageSize ?? 10000,
       page: page,
     },
   });
@@ -74,10 +74,48 @@ export async function getHtmls(
 }
 
 
+export async function getHtmlsMain(
+  page: number,
+  queryString: string,
+  category: string,
+  isDisplayHomePage?: boolean,
+  pageSize?: number,
+  type?: ETypeHtml,
+  isPopular?: boolean,
+  sortBy?: ESort
+) {
+  const posts = await sdk.collection("htmls").find({
+    fields: ["name", 'slug', 'is_editor_choice'],
+    populate: {
+      image: {
+        fields: ["url", "alternativeText", "name"],
+      },
+      category_html: {
+        fields: ["name", 'slug'],
+      },
+    },
+
+
+    filters: {
+      name: { $containsi: queryString },
+      ...(category && { category_html: { slug: { $eq: category } } }),
+      ...(isDisplayHomePage && { is_display_home: { $eq: isDisplayHomePage } }),
+      ...(type && { type: { $eq: type } }),
+      ...(isPopular && { is_popular: { $eq: isPopular } }),
+    },
+    sort: sortBy ? [sortBy] : [ESort.PUBLISHNEWEST],
+    pagination: {
+      pageSize: pageSize ?? 10000,
+      page: page,
+    },
+  });
+  return posts;
+}
+
 export async function getHtmlPopularLayout(
   page: number,
-  pageSize?:number,
-  isPopular?:boolean,
+  pageSize?: number,
+  isPopular?: boolean,
 ) {
   const posts = await sdk.collection("htmls").find({
     fields: ["name", 'slug'],
@@ -87,10 +125,10 @@ export async function getHtmlPopularLayout(
       }
     },
     filters: {
-      ...(isPopular && { is_popular_layout:  { $eq: isPopular }  }),
+      ...(isPopular && { is_popular_layout: { $eq: isPopular } }),
     },
     pagination: {
-      pageSize: pageSize ?? 1000,
+      pageSize: pageSize ?? 10000,
       page: page,
     },
   });
@@ -99,13 +137,13 @@ export async function getHtmlPopularLayout(
 
 export async function getHtmlFooter(
   page: number,
-  pageSize?:number,
-  isInternal?:boolean,
+  pageSize?: number,
+  isInternal?: boolean,
 ) {
   const posts = await sdk.collection("htmls").find({
     fields: ["name", 'slug'],
     filters: {
-      ...(isInternal && { is_internal:  { $eq: isInternal }  }),
+      ...(isInternal && { is_internal: { $eq: isInternal } }),
     },
     pagination: {
       pageSize: pageSize ?? 1000,
