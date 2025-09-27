@@ -1,15 +1,12 @@
-import { GameGrid } from "@/components/games/GameGrid"
-import BannerAd from "@/components/ads/BannerAd"
-import ResponsiveAd from "@/components/ads/ResponsiveAd"
-import MobileAd from "@/components/ads/MobileAd"
 import { StructuredData } from "@/components/seo/StructuredData"
-import { getHtmls, getHtmlsMain } from "@/features/games/service/get-games"
+import { getHtmlsMain } from "@/features/games/service/get-games"
 import { ETypeHtml } from "@/features/games/constants/data"
 import DefaultLayout from "@/components/layout"
 import type { Metadata } from "next"
 import { generateMetadata } from "@/utils/seo"
-import GAMRectangleAd from "@/components/ads/GAMRectangleAd"
 import GAMAdUnit from "@/components/ads/GAMAdUnit"
+import Link from "next/link"
+import { StrapiImage } from "@/components/custom/strapi-image"
 
 export const revalidate = 3600
 
@@ -98,7 +95,33 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
         {/* <GAMBannerAd adUnitName="Display"  divId="div-gpt-ad-1755424941447-0" /> */}
         {/* Games Grid */}
         <div className="mb-8">
-          <GameGrid games={data} loading={false} />
+          {/* <GameGrid games={data} loading={false} /> */}
+          <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8  xl:grid-cols-10 2xl:grid-cols-10 gap-3 grid-flow-dense">
+            {data.map((game, index) => (
+              <div
+                key={`${game.documentId}-${index}`}
+                className={`
+              ${game.is_editor_choice ? "col-span-2 row-span-2" : ""}
+            `}
+              >
+                <Link href={`/games/${game.slug}`} className="block overflow-hidden rounded-xl group relative aspect-square">
+                  {/* Game image */}
+                  <StrapiImage
+                    src={game.image?.[0]?.url || "/placeholder.svg?height=120&width=120&text=Game"}
+                    alt={game.image?.[0]?.alternativeText || game.name}
+                    width={200}
+                    height={200}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-white text-xs font-semibold text-center px-2">{game.name}</span>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Pagination */}
