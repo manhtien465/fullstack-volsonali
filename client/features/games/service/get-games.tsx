@@ -1,5 +1,5 @@
 import sdk from "@/lib/sdk";
-import { ETypeHtml } from "../constants/data";
+import { EGroups, ETypeHtml } from "../constants/data";
 import { ESort } from "@/constants/sort";
 
 export async function getHtmlBySlug(slug: string, status: string) {
@@ -135,6 +135,29 @@ export async function getHtmlPopularLayout(
   return posts;
 }
 
+export async function getHtmlGroups(
+  page: number,
+  pageSize?: number,
+  group?: EGroups,
+) {
+  const posts = await sdk.collection("htmls").find({
+    fields: ["name", 'slug'],
+    populate: {
+      image: {
+        fields: ["url", "alternativeText", "name"],
+      }
+    },
+    filters: {
+      ...(group && { group: { $eq: group } }),
+    },
+    pagination: {
+      pageSize: pageSize ?? 10000,
+      page: page,
+    },
+  });
+  return posts;
+}
+
 export async function getHtmlFooter(
   page: number,
   pageSize?: number,
@@ -142,6 +165,11 @@ export async function getHtmlFooter(
 ) {
   const posts = await sdk.collection("htmls").find({
     fields: ["name", 'slug'],
+    populate: {
+      image: {
+        fields: ["url", "alternativeText", "name"],
+      }
+    },
     filters: {
       ...(isInternal && { is_internal: { $eq: isInternal } }),
     },

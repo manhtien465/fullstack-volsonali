@@ -7,3 +7,9 @@ export enum ETypeHtml {
   TOOL = "tool",
   REVIEW ='review'
 }
+
+export enum EGroups {
+  HOT = "hot",
+  ONLINE = "online",
+  NEW ='new'
+}
