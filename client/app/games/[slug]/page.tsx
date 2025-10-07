@@ -25,6 +25,7 @@ import NotFoundPage from "@/app/not-found"
 import PopularNow from "@/features/games/ui/popular-now"
 import GAMAdUnit from "@/components/ads/GAMAdUnit"
 import { EGroups, ETypeHtml } from '@/features/games/constants/data';
+import MoreGame from '@/components/new-layout10/MoreGame';
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -97,7 +98,7 @@ export default async function GameDetailPage({ params }: PageProps) {
       <Header games={headerGames} />
       <main className="max-w-screen-2xl mx-auto p-4">
         <div className="flex flex-col md:flex-row gap-4">
-          <div className='w-3/4'>
+          <div className='w-5/6'>
             <div className='w-full flex  gap-4 md:flex-row'>
               <aside className="w-full md:w-1/4">
                 <h2 className="text-blue-900 font-bold text-lg mb-2">Best Games</h2>
@@ -139,15 +140,10 @@ export default async function GameDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            <GameGrid title="More Online Games, No Download" games={gamesFooters} />
-            <div className="text-center">
-              <button className="bg-yellow-500 text-black font-bold py-2 px-6 rounded-lg hover:bg-yellow-600 transition-colors">
-                Load More Games
-              </button>
-            </div>
+            <MoreGame></MoreGame>
           </div>
 
-          <aside className="hidden md:block w-1/4">
+          <aside className="hidden md:block w-1/6">
             <div className="bg-blue-600 border-2 border-blue-700 h-96 w-full flex items-center justify-center text-white">
               Ad Space
             </div>

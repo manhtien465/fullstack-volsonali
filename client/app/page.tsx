@@ -59,18 +59,18 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
       <div className="max-w-[1860px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         {/* Header Banner Ad */}
 
-        <div className="hidden md:block mb-6 lg:mb-8">
+        {/* <div className="hidden md:block mb-6 lg:mb-8">
           <GAMAdUnit adId="div-gpt-ad-1755424941447-6" style={{ minWidth: 180, minHeight: 60 }}></GAMAdUnit>
-        </div>
+        </div> */}
 
 
 
 
 
         {/* Mobile Ad */}
-        <div className="flex md:hidden">
+        {/* <div className="flex md:hidden">
           <GAMAdUnit adId="div-gpt-ad-1755424941447-7" style={{ minWidth: 180, minHeight: 60, marginBottom: "16px" }}></GAMAdUnit>
-        </div>
+        </div> */}
 
 
 

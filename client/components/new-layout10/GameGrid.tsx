@@ -15,7 +15,7 @@ export const GameGrid: React.FC<GameGridProps> = ({ title, games }) => {
       <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2">
         {games.map((game) => (
           <GameIcon
-            key={game.id}
+            key={game.documentId}
             src={game?.image && game?.image[0]?.url}
             tag={'H5'}
             name={game.name}

@@ -1,30 +1,20 @@
 
 import {
   headerGames,
-  sidebarGames,
-  clickToPlayGames,
-  moreOnlineGames
 } from '@/components/new-layout10/constants';
 import { GameIcon } from '@/components/new-layout10/GameIcon';
 import { Header } from '@/components/new-layout10/Header';
-import { GameDetails } from '@/components/new-layout10/GameDetails';
 import { GameGrid } from '@/components/new-layout10/GameGrid';
 import { Screenshots } from '@/components/new-layout10/Screenshots';
 import { PlayNowBanner } from '@/components/new-layout10/PlayNowBanner';
 import { AdditionalInfo } from '@/components/new-layout10/AdditionalInfo';
-import { cn, getStrapiMedia } from "@/lib/utils"
-import { FloatingElements } from "@/components/animations/FloatingElements"
+import { getStrapiMedia } from "@/lib/utils"
 import type { Metadata } from "next"
 import { draftMode } from "next/headers"
-import { getHtmlBySlug, getHtmlFooter, getHtmlGroups, getHtmls, getHtmlsMain } from "@/features/games/service/get-games"
-import { TabGames } from "@/features/games/ui/tab"
-import { StrapiImage } from "@/components/custom/strapi-image"
-import { ContentGame } from "@/features/games/ui/content-game"
-import DefaultLayout from "@/components/layout"
+import { getHtmlBySlug, getHtmlGroups, getHtmlsMain } from "@/features/games/service/get-games"
+
 import NotFoundPage from "@/app/not-found"
-import PopularNow from "@/features/games/ui/popular-now"
-import GAMAdUnit from "@/components/ads/GAMAdUnit"
-import { EGroups, ETypeHtml } from '@/features/games/constants/data';
+import { EGroups } from '@/features/games/constants/data';
 import SafeGameIframe from '@/components/games/play/SafeIframe';
 import MoreGame from '@/components/new-layout10/MoreGame';
 
