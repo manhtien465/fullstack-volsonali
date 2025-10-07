@@ -1,9 +1,9 @@
 export const SEO_CONFIG = {
-  siteName: "MegaGameFun",
-  siteUrl: "https://megagamefun.com",
-  defaultTitle: "MegaGameFun - Play Free HTML5 Games Online",
+  siteName: "Volsonali",
+  siteUrl: "https://volsonali.com",
+  defaultTitle: "Volsonali - Play Free HTML5 Games Online",
   defaultDescription:
-    "Play the best free HTML5 games online at MegaGameFun. No downloads required! Enjoy arcade, puzzle, racing, and action games directly in your browser.",
+    "Play the best free HTML5 games online at Volsonali. No downloads required! Enjoy arcade, puzzle, racing, and action games directly in your browser.",
   defaultKeywords: [
     "HTML5 games",
     "free online games",
@@ -16,7 +16,7 @@ export const SEO_CONFIG = {
     "play games online",
     "no download games",
   ],
-  author: "MegaGameFun Team",
+  author: "Volsonali Team",
   twitterHandle: "@megagamefun",
   facebookAppId: "your-facebook-app-id",
   themeColor: "#3B82F6",

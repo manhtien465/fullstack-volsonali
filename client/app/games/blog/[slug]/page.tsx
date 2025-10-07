@@ -40,23 +40,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const imageUrl = game.image?.[0]?.url ? getStrapiMedia(game.image[0].url) : null
 
     return {
-      title: `${game.name} - Learn & Explore | MegaGameFun`,
-      description: game.desc || `Explore ${game.name} on MegaGameFun. ${game.category_html.name} learning resource.`,
+      title: `${game.name} - Learn & Explore | Volsonali`,
+      description: game.desc || `Explore ${game.name} on Volsonali. ${game.category_html.name} learning resource.`,
       openGraph: {
-        title: `${game.name} - Learn & Explore | MegaGameFun`,
-        description: game.desc || `Explore ${game.name} on MegaGameFun.`,
-        url: `https://megagamefun.com/games/${game.slug}`,
+        title: `${game.name} - Learn & Explore | Volsonali`,
+        description: game.desc || `Explore ${game.name} on Volsonali.`,
+        url: `https://volsonali.com/games/${game.slug}`,
         type: "website",
         images: imageUrl ? [{ url: imageUrl }] : [],
       },
       twitter: {
         card: "summary_large_image",
-        title: `${game.name} - Learn & Explore | MegaGameFun`,
-        description: game.desc || `Explore ${game.name} on MegaGameFun.`,
+        title: `${game.name} - Learn & Explore | Volsonali`,
+        description: game.desc || `Explore ${game.name} on Volsonali.`,
         images: imageUrl ? [{ url: imageUrl }] : [],
       },
       alternates: {
-        canonical: `https://megagamefun.com/games/${game.slug}`,
+        canonical: `https://volsonali.com/games/${game.slug}`,
       },
     }
   } catch (error) {
@@ -166,11 +166,11 @@ export default async function GameDetailPage({ params }: PageProps) {
             <Sponsor></Sponsor>
             {/* Tabs */}
             <div className="my-5">
-            <ScreenshotTab game={game}></ScreenshotTab>
+              <ScreenshotTab game={game}></ScreenshotTab>
             </div>
-            
-            <GAMAdUnit adId="div-gpt-ad-1755424941447-4" style={{ minWidth: 180, minHeight: 60 }}></GAMAdUnit>            
-            
+
+            <GAMAdUnit adId="div-gpt-ad-1755424941447-4" style={{ minWidth: 180, minHeight: 60 }}></GAMAdUnit>
+
             {/* Rating */}
             <Rating game={game}></Rating>
             {/* pro and cons */}
@@ -207,9 +207,9 @@ export default async function GameDetailPage({ params }: PageProps) {
                 </div>
               </div>
             )}
-              <div className="max-w-5xl mx-auto p-4">
-                <GAMAdUnit adId="div-gpt-ad-1755424941447-5" style={{ minWidth: 180, minHeight: 60 }}></GAMAdUnit>    
-              </div>        
+            <div className="max-w-5xl mx-auto p-4">
+              <GAMAdUnit adId="div-gpt-ad-1755424941447-5" style={{ minWidth: 180, minHeight: 60 }}></GAMAdUnit>
+            </div>
             <DigitalMarkets game={game}></DigitalMarkets>
           </div>
 

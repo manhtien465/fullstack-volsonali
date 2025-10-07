@@ -11,10 +11,10 @@ import { StrapiImage } from "@/components/custom/strapi-image"
 export const revalidate = 3600
 
 export const metadata: Metadata = generateMetadata({
-  title: "Read Game Reviews and play - MegaGameFun",
+  title: "Read Game Reviews and play - Volsonali",
   description:
     "Your Fun Zone with HTML5 Game.  Play H5 games online on your browsers!",
-  keywords: ["h5 game", "MegaGameFun", "fun game"],
+  keywords: ["h5 game", "Volsonali", "fun game"],
   url: "/games",
 })
 
@@ -34,10 +34,10 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
   const gamesPageSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Read Game Reviews and play - MegaGameFun",
+    name: "Read Game Reviews and play - Volsonali",
     description:
       "Your Fun Zone with HTML5 Game.  Play H5 games online on your browsers!",
-    url: "https://megagamefun.com/games",
+    url: "https://volsonali.com/games",
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: data.length,

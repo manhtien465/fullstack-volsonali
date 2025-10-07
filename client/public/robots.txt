@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://megagamefun.com
+Host: https://volsonali.com
 
 # Sitemaps
-Sitemap: https://megagamefun.com/sitemap.xml
+Sitemap: https://volsonali.com/sitemap.xml

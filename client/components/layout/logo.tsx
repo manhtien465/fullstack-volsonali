@@ -10,7 +10,7 @@ const Logo = () => {
       </div>
       <div className="flex flex-col">
         <span className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
-          MegaGameFun
+          Volsonali
         </span>
       </div> */}
       <Image src={'/logo.jpg'} width={300} height={300} alt="logo" />

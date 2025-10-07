@@ -22,9 +22,9 @@ const fontSans = Inter({
   subsets: ["latin"],
 })
 export const metadata: Metadata = generateMetadata({
-  title: "MegaGameFun - Your Knowledge Experience Platform",
+  title: "Volsonali - Your Knowledge Experience Platform",
   description:
-    "Discover comprehensive guides, tips, and knowledge at MegaGameFun. Your go-to platform for expert insights and detailed information across various topics.",
+    "Discover comprehensive guides, tips, and knowledge at Volsonali. Your go-to platform for expert insights and detailed information across various topics.",
   keywords: ["megagamefun", "knowledge base", "guides", "tips", "information", "megagamefun"],
   url: "/",
 })
@@ -38,7 +38,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <StructuredData data={GAME_SEO_SCHEMA} />
-        <link rel="canonical" href="https://megagamefun.com" />
+        <link rel="canonical" href="https://volsonali.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="format-detection" content="telephone=no" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -54,17 +54,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-XXXXXX');
             `,
           }}
-          
+
         />
-       
-        
-        
+
+
+
         {/* <GAMScript /> */}
       </head>
       <body className={fontSans.variable}>
         {/* Google Tag manager */}
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXX"
-        height="0" width="0" style={{display:"none",visibility:"hidden"}}></iframe></noscript>
+          height="0" width="0" style={{ display: "none", visibility: "hidden" }}></iframe></noscript>
         {/* Google Analytics */}
         <GoogleAnalytics />
 
@@ -85,7 +85,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <main className="min-h-screen bg-gray-50">{children}</main>
 
         {/* <Footer /> */}
-        
+
 
         {/* Sticky Mobile Ad */}
         <StickyAd adSlot="YOUR_STICKY_AD_SLOT_ID" position="bottom" closeable={true} />

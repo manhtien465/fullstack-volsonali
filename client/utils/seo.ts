@@ -159,7 +159,7 @@ export function generateGameSchema(game: {
 }
 
 export function shareGame(game: any) {
-  const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://megagamefun.com"
+  const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://volsonali.com"
   const url = `${baseUrl}/games/${game.slug}`
 
   const title = `${game.name} - Play Online for Free`

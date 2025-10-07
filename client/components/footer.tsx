@@ -19,8 +19,8 @@ interface FooterProps {
     text1: string;
     text2: string;
     text3: string
-    text4:string;
-    copyright:string;
+    text4: string;
+    copyright: string;
     socialLinks: Link[];
     quickLinks: Link[];
     bottomLinks: Link[];
@@ -34,16 +34,16 @@ function renderIcon(text: string) {
       return <Github />;
     case "youtube":
       return <Youtube />;
-      case "facebook":
+    case "facebook":
       return <Facebook />;
-     case "instagram":
+    case "instagram":
       return <Instagram />;
     default:
       return null;
   }
 }
 export default async function Footer({ data }: Readonly<FooterProps>) {
-  const { data:categories } = await getHtmlFooter(1,undefined,true )
+  const { data: categories } = await getHtmlFooter(1, undefined, true)
 
   return (
     <footer className="bg-gray-900 text-white relative overflow-hidden">
@@ -74,7 +74,7 @@ export default async function Footer({ data }: Readonly<FooterProps>) {
               </div> */}
               <div className="flex flex-col">
                 <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
-                  MegaGameFun
+                  Volsonali
                 </span>
               </div>
             </div>
@@ -87,8 +87,8 @@ export default async function Footer({ data }: Readonly<FooterProps>) {
           <div>
             <h3 className="font-semibold mb-4">{data.text2 ?? 'Quick Links'}</h3>
             <ul className="space-y-2 text-sm">
-						{
-               data.quickLinks &&  data.quickLinks.map((el) => {
+              {
+                data.quickLinks && data.quickLinks.map((el) => {
                   return (
                     <li key={el.text}>
                       <Link
@@ -128,11 +128,11 @@ export default async function Footer({ data }: Readonly<FooterProps>) {
           <div>
             <h3 className="font-semibold mb-4">{data.text4 ?? "Follow us"}</h3>
             <div className="flex space-x-4 mb-4">
-						{data.socialLinks &&
+              {data.socialLinks &&
                 data.socialLinks.map((link) => (
                   <Link
                     href={link.href}
-                   className="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110 hover:text-blue-400"
+                    className="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110 hover:text-blue-400"
                     key={link.text}
                     target="_blank"
                   >
@@ -145,13 +145,13 @@ export default async function Footer({ data }: Readonly<FooterProps>) {
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm">
-          <p>{ data.copyright ?? '© 2025 MegaGameFun. All rights reserved.'}</p>
+          <p>{data.copyright ?? '© 2025 Volsonali. All rights reserved.'}</p>
           <div className="mt-2 space-x-4">
-					{data.bottomLinks.map((el)=>{
-              return(
-                <Link href={el.href} className="hover:text-blue-400 transition-colors duration-200"  key={el.text}
+            {data.bottomLinks.map((el) => {
+              return (
+                <Link href={el.href} className="hover:text-blue-400 transition-colors duration-200" key={el.text}
                   target={el.isExternal ? "_blank" : "_self"}
-                  >
+                >
                   {el.text}
                 </Link>
               )
