@@ -1,7 +1,7 @@
 module.exports = {
     apps: [
       {
-        name: 'admin-megagamefun.net', // Name of your application in PM2
+        name: 'admin-vosonali.net', // Name of your application in PM2
         script: 'npm', // Use npm to run the start script
         args: 'start', // Runs `npm start` (for production)
         cwd: './', // Current working directory (root of your Strapi project)
