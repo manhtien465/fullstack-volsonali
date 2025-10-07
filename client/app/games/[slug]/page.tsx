@@ -94,57 +94,51 @@ export default async function GameDetailPage({ params }: PageProps) {
   return (
 
 
-    <div className="min-h-screen font-sans">
+    <div className="min-h-screen font-sans bg-gray-50">
       <Header games={headerGames} />
       <main className="max-w-screen-2xl mx-auto p-4">
-        <div className="flex flex-col md:flex-row gap-4">
-          <div className='w-5/6'>
-            <div className='w-full flex  gap-4 md:flex-row'>
-              <aside className="w-full md:w-1/4">
-                <h2 className="text-blue-900 font-bold text-lg mb-2">Best Games</h2>
-                <div className="grid grid-cols-2 gap-2">
-                  {gameSidebars.map((game, index) => {
-                    // The 5th game (index 4) is larger, spanning 2 columns and 2 rows.
-                    if (index === 4) {
-                      return (
-                        <GameIcon
-                          slug={game.slug}
-                          key={game.id}
-                          src={game?.image[0]?.url}
-                          name={game.name}
-                          className="col-span-2 row-span-2"
-                        />
-                      );
-                    }
-                    // All other games in the sidebar are square.
-                    return (
-                      <GameIcon
-                        key={game.id}
-                        src={game?.image[0]?.url}
-                        name={game.name}
-                        slug={game.slug}
-                        className="aspect-square"
-                      />
-                    );
-                  })}
+        {/* Wrapper */}
+        <div className="flex flex-col lg:flex-row gap-4">
+          {/* Main content area */}
+          <div className="w-full lg:w-5/6 flex flex-col gap-4">
+            <div className="flex flex-col lg:flex-row gap-4">
+              {/* Left sidebar */}
+              <aside className="w-full lg:w-1/4">
+                <h2 className="text-blue-900 font-bold text-lg mb-3">Best Games</h2>
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 gap-2">
+                  {gameSidebars.map((game, index) => (
+                    <GameIcon
+                      key={game.id}
+                      slug={game.slug}
+                      src={game?.image[0]?.url}
+                      name={game.name}
+                      className={
+                        index === 4
+                          ? 'col-span-2 row-span-2 aspect-square'
+                          : 'aspect-square'
+                      }
+                    />
+                  ))}
                 </div>
               </aside>
 
-              <div className="w-full md:w-3/4 flex flex-col gap-4">
+              {/* Right (Game details + grids) */}
+              <div className="w-full lg:w-3/4 flex flex-col gap-4">
                 <GameDetails data={game} />
                 <GameGrid title="Click to Play, No Download" games={gamesHomepage} />
                 {game.screenshots && <Screenshots data={game} />}
                 <PlayNowBanner data={game} />
                 <AdditionalInfo data={game} />
-
               </div>
             </div>
 
-            <MoreGame></MoreGame>
+            {/* More games */}
+            <MoreGame />
           </div>
 
-          <aside className="hidden md:block w-1/6">
-            <div className="bg-blue-600 border-2 border-blue-700 h-96 w-full flex items-center justify-center text-white">
+          {/* Right-side ad (only on desktop) */}
+          <aside className="hidden lg:flex w-full lg:w-1/6">
+            <div className="bg-blue-600 border-2 border-blue-700 h-96 w-full flex items-center justify-center text-white rounded-lg">
               Ad Space
             </div>
           </aside>

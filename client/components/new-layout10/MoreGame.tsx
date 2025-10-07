@@ -32,7 +32,7 @@ const MoreGame = () => {
     return (
         <>
             <GameGrid title="More Online Games, No Download" games={games} />
-            <div className="text-center mt-4">
+            <div className="text-center mt-4 mb-8">
                 {hasMore ? (
                     <button
                         onClick={handleLoadMore}

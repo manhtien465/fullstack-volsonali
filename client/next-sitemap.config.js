@@ -19,18 +19,7 @@ module.exports = {
       changefreq: "weekly",
       priority: 0.8,
     }))
-    // const sitemapPost = slugsPost.map((slug) => ({
-    //   loc: `/blog/${slug}`,
-    //   lastmod: new Date().toISOString(),
-    //   changefreq: "weekly",
-    //   priority: 0.8,
-    // }))
-    // const sitemapTool= slugsTool.map((slug) => ({
-    //   loc: `/tools/${slug}`,
-    //   lastmod: new Date().toISOString(),
-    //   changefreq: "weekly",
-    //   priority: 0.8,
-    // }));
+   
     return [...sitemapGame]
   },
 }
