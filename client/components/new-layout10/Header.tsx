@@ -24,6 +24,15 @@ export const Header: React.FC<HeaderProps> = async () => {
               className="w-20 h-20 flex-shrink-0"
             />
           ))}
+          {game.map((gameItem, index) => (
+            <GameIcon
+              key={`${gameItem.documentId}-${index}-2`}
+              src={gameItem?.image[0]?.url}
+              name={gameItem.name}
+              slug={gameItem.slug}
+              className="w-20 h-20 flex-shrink-0"
+            />
+          ))}
         </div>
       </div>
     </header>
