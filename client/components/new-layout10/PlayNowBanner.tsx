@@ -29,14 +29,20 @@ export const PlayNowBanner = ({ data }: PageProps) => {
                     <span className="text-white font-bold text-lg">{data.name}</span>
                 </div>
                 <div className="flex flex-col gap-2">
-                    <Link href={`/games/play/${data.slug}`} className="bg-yellow-500 text-black font-bold py-2 px-6 rounded-lg flex items-center gap-2 hover:bg-yellow-600 transition-colors text-sm">
-                        <PlayIcon />
-                        PLAY NOW
-                    </Link>
-                    <button className="bg-transparent border-2 border-white text-white font-bold py-2 px-6 rounded-lg flex items-center gap-2 hover:bg-white hover:text-blue-600 transition-colors text-sm">
-                        <MobileIcon />
-                        Download from Mobile
-                    </button>
+									{
+										data.url ? 
+										<Link href={`/games/play/${data.slug}`} className="bg-yellow-500 text-black font-bold py-2 px-6 rounded-lg flex items-center gap-2 hover:bg-yellow-600 transition-colors text-sm">
+										<PlayIcon />
+										PLAY NOW
+								</Link>
+										:
+										<button className="bg-transparent border-2 border-white text-white font-bold py-2 px-6 rounded-lg flex items-center gap-2 hover:bg-white hover:text-blue-600 transition-colors text-sm">
+										<MobileIcon />
+										Download from Mobile
+									 </button>
+									}
+                   
+                   
                 </div>
             </div>
         </div>

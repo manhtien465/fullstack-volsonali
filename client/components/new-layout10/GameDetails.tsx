@@ -3,6 +3,7 @@ import React from 'react';
 import { StarRating } from './StarRating';
 import { StrapiImage } from '../custom/strapi-image';
 import { MarkdownText } from '../custom/markdown-text';
+import ResponsiveAd from '../ads/ResponsiveAd';
 
 const PlayIcon: React.FC = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
@@ -15,7 +16,7 @@ interface PageProps {
 }
 export const GameDetails = ({ data }: PageProps) => {
   return (
-    <div className="bg-blue-600 p-4 rounded-lg border-2 border-blue-700 text-white">
+    <div className="hidden md:block bg-blue-600 p-4 rounded-lg border-2 border-blue-700 text-white">
       <div className="flex items-start gap-4">
         <StrapiImage src={data.image[0] && data.image[0].url} alt={data.name} className="w-20 h-20 rounded-md" width={80} height={80} />
         <div className="flex-1">
@@ -27,16 +28,18 @@ export const GameDetails = ({ data }: PageProps) => {
         </div>
 
       </div>
-      <div className="mt-4">
-        <h3 className="font-bold mb-1">Editor's Review:</h3>
-        {/* <p className="text-sm text-blue-200">
-          Moto X3M is an exhilarating time trial obstacle course bike racing game that tests your skills and reflexes. With 22 increasingly challenging levels, the game offers endless opportunities for thrill-seekers to perform wild stunts and race against the clock. Get ready to equip your helmet, crank your engine, and push your limits to reach the finish line!
-        </p>
-        <p className="text-sm text-blue-200 mt-2">
-          In Moto X3M, you are tasked with navigating through intricate courses filled with a variety of obstacles, jumps, and loops. Each level presents unique challenges that require precise control and timing to overcome. The game's dynamic physics engine adds to the excitement, making every jump, flip, and crash feel incredibly realistic.
-        </p> */}
-        <MarkdownText content={data.full_description ?? data.desc} />
-      </div>
+      <div className="mt-4 flex flex-wrap">
+				<ResponsiveAd adSlot="111" className="my-8 sm:my-12 w-full md:w-[30%]" />
+				<div className=' w-full md:w-[70%] '>
+					<h3 className="font-bold mb-1">Editor's Review:</h3>
+					<div className='h-[300px] overflow-scroll-y overflow-x-hidden'>
+					<MarkdownText content={data.full_description ?? data.desc} />
+					</div>
+      	</div>
+				<div>
+      
+				</div>
+				</div>
     </div>
   );
 };

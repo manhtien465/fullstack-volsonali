@@ -1,9 +1,6 @@
 
 import {
   headerGames,
-  sidebarGames,
-  clickToPlayGames,
-  moreOnlineGames
 } from '@/components/new-layout10/constants';
 import { GameIcon } from '@/components/new-layout10/GameIcon';
 import { Header } from '@/components/new-layout10/Header';
@@ -12,20 +9,16 @@ import { GameGrid } from '@/components/new-layout10/GameGrid';
 import { Screenshots } from '@/components/new-layout10/Screenshots';
 import { PlayNowBanner } from '@/components/new-layout10/PlayNowBanner';
 import { AdditionalInfo } from '@/components/new-layout10/AdditionalInfo';
-import { cn, getStrapiMedia } from "@/lib/utils"
-import { FloatingElements } from "@/components/animations/FloatingElements"
+import {  getStrapiMedia } from "@/lib/utils"
 import type { Metadata } from "next"
 import { draftMode } from "next/headers"
-import { getHtmlBySlug, getHtmlFooter, getHtmlGroups, getHtmls, getHtmlsMain } from "@/features/games/service/get-games"
-import { TabGames } from "@/features/games/ui/tab"
-import { StrapiImage } from "@/components/custom/strapi-image"
-import { ContentGame } from "@/features/games/ui/content-game"
-import DefaultLayout from "@/components/layout"
+import { getHtmlBySlug, getHtmlFooter, getHtmlGroups, getHtmlsMain } from "@/features/games/service/get-games"
 import NotFoundPage from "@/app/not-found"
-import PopularNow from "@/features/games/ui/popular-now"
 import GAMAdUnit from "@/components/ads/GAMAdUnit"
 import { EGroups, ETypeHtml } from '@/features/games/constants/data';
 import MoreGame from '@/components/new-layout10/MoreGame';
+import ResponsiveAd from '@/components/ads/ResponsiveAd';
+import { MarkdownText } from '@/components/custom/markdown-text';
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -127,7 +120,15 @@ export default async function GameDetailPage({ params }: PageProps) {
                 <GameDetails data={game} />
                 <GameGrid title="Click to Play, No Download" games={gamesHomepage} />
                 {game.screenshots && <Screenshots data={game} />}
+								<ResponsiveAd adSlot="111" className="my-8 sm:my-12 h-[113px]" />
                 <PlayNowBanner data={game} />
+								<div className='block md:hidden bg-blue-600 text-white'>
+								<h3 className="font-bold mb-1">Editor's Review:</h3>
+								<div className='h-[300px] overflow-scroll-y overflow-x-hidden'>
+								<MarkdownText content={game.full_description ?? game.desc} />
+								</div>
+							</div>
+								<ResponsiveAd adSlot="111" className="my-8 sm:my-12" />
                 <AdditionalInfo data={game} />
               </div>
             </div>
@@ -139,7 +140,7 @@ export default async function GameDetailPage({ params }: PageProps) {
           {/* Right-side ad (only on desktop) */}
           <aside className="hidden lg:flex w-full lg:w-1/6">
             <div className="bg-blue-600 border-2 border-blue-700 h-96 w-full flex items-center justify-center text-white rounded-lg">
-              Ad Space
+							<ResponsiveAd adSlot="111" className="my-8 sm:my-12" />
             </div>
           </aside>
         </div>
