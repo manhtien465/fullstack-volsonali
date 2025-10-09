@@ -5,4 +5,5 @@ export enum ESort {
   OLDEST = "createdAt:asc",
   TITLE_ASC = "title:asc",
   TITLE_DESC = "title:desc",
+  POSITION_DESC = "position:desc",
 }

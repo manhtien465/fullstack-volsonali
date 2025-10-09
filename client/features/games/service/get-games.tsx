@@ -103,7 +103,7 @@ export async function getHtmlsMain(
       ...(type && { type: { $eq: type } }),
       ...(isPopular && { is_popular: { $eq: isPopular } }),
     },
-    sort: sortBy ? [sortBy] : [ESort.PUBLISHNEWEST],
+    sort: sortBy ? [sortBy] : [ESort.POSITION_DESC, ESort.NEWEST],
     pagination: {
       pageSize: pageSize ?? 10000,
       page: page,
