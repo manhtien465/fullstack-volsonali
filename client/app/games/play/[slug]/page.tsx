@@ -150,7 +150,7 @@ export default async function GameDetailPage({ params }: PageProps) {
           </div>
 
           {/* Right-side ad (only on desktop) */}
-          <aside className="hidden lg:flex w-full lg:w-3/12">
+          <aside className="hidden lg:block w-full lg:w-3/12">
 					<div className='w-full'>
 						<GoogleAdSense
 									adSlot={'5677062264'}
