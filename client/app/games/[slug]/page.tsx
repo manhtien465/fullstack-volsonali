@@ -20,6 +20,7 @@ import MoreGame from '@/components/new-layout10/MoreGame';
 import ResponsiveAd from '@/components/ads/ResponsiveAd';
 import { MarkdownText } from '@/components/custom/markdown-text';
 import About from '@/components/new-layout10/About';
+import GoogleAdSense from '@/components/ads/GoogleAdSense';
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -94,7 +95,7 @@ export default async function GameDetailPage({ params }: PageProps) {
         {/* Wrapper */}
         <div className="flex flex-col lg:flex-row gap-4">
           {/* Main content area */}
-          <div className="w-full lg:w-5/6 flex flex-col gap-4">
+          <div className="w-full lg:w-9/12 flex flex-col gap-4">
             <div className="flex flex-col lg:flex-row gap-4">
               {/* Left sidebar */}
               <aside className="w-full lg:w-1/4">
@@ -121,7 +122,18 @@ export default async function GameDetailPage({ params }: PageProps) {
                 <GameDetails data={game} />
                 <GameGrid title="Click to Play, No Download" games={gamesHomepage} />
                 {game.screenshots && <Screenshots data={game} />}
-								<ResponsiveAd adSlot="5677062264" className="my-8 sm:my-12 h-[113px]" />
+								<GoogleAdSense
+									adSlot={'5677062264'}
+									adFormat="fluid"
+									adLayout="in-article"
+									responsive={true}
+									style={{
+										height:'113px',
+										display: "block",
+										textAlign: "center",
+									}}
+									className="w-full"
+								/>
                 <PlayNowBanner data={game} />
 								<div className='block md:hidden bg-blue-600 text-white'>
 								<h3 className="font-bold mb-1">Editor's Review:</h3>
@@ -129,7 +141,18 @@ export default async function GameDetailPage({ params }: PageProps) {
 								<MarkdownText content={game.full_description ?? game.desc} />
 								</div>
 							</div>
-								<ResponsiveAd adSlot="5677062264" className="my-8 sm:my-12" />
+								<GoogleAdSense
+									adSlot={'5677062264'}
+									adFormat="fluid"
+									adLayout="in-article"
+									responsive={true}
+									style={{
+										height:'273px',
+										display: "block",
+										textAlign: "center",
+									}}
+									className="w-full"
+								/>
                 <AdditionalInfo data={game} />
               </div>
             </div>
@@ -140,10 +163,8 @@ export default async function GameDetailPage({ params }: PageProps) {
           </div>
 
           {/* Right-side ad (only on desktop) */}
-          <aside className="hidden lg:flex w-full lg:w-1/6">
-            <div className="bg-blue-600 border-2 border-blue-700 h-96 w-full flex items-center justify-center text-white rounded-lg">
-							<ResponsiveAd adSlot="5951098589"  />
-            </div>
+          <aside className="hidden lg:flex w-full lg:w-3/12">
+							<ResponsiveAd adSlot="5951098589" className='w-full' />
           </aside>
         </div>
       </main>
