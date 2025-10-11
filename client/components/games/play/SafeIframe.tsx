@@ -60,7 +60,7 @@ function SafeGameIframe({ game }: { game: any }) {
   return (
     <>
       {/* Game Container */}
-      <div className="relative particles-bg w-full h-[60vh] sm:aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+      <div className="relative particles-bg w-full h-[80vh] sm:aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
         <FloatingElements count={15} />
 
         {!hasStarted && (

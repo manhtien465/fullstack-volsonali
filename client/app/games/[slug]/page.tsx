@@ -91,7 +91,7 @@ export default async function GameDetailPage({ params }: PageProps) {
 
     <div className="min-h-screen font-sans bg-gray-50">
       <Header games={headerGames} />
-      <main className="max-w-screen-2xl mx-auto p-4">
+      <main className="max-w-screen-xl mx-auto p-4">
         {/* Wrapper */}
         <div className="flex flex-col lg:flex-row gap-4">
           {/* Main content area */}

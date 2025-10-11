@@ -19,6 +19,7 @@ import SafeGameIframe from '@/components/games/play/SafeIframe';
 import MoreGame from '@/components/new-layout10/MoreGame';
 import ResponsiveAd from '@/components/ads/ResponsiveAd';
 import About from '@/components/new-layout10/About';
+import GoogleAdSense from '@/components/ads/GoogleAdSense';
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -87,14 +88,14 @@ export default async function GameDetailPage({ params }: PageProps) {
 
     <div className="min-h-screen font-sans bg-gray-50">
       <Header games={headerGames} />
-      <main className="max-w-screen-2xl mx-auto p-4">
+      <main className="max-w-screen-xl mx-auto p-4">
         {/* Wrapper */}
         <div className="flex flex-col lg:flex-row gap-4">
           {/* Main content area */}
-          <div className="w-full lg:w-5/6 flex flex-col gap-4">
+          <div className="w-full lg:w-9/12 flex flex-col gap-4">
             <div className="flex flex-col lg:flex-row gap-4">
               {/* Left sidebar */}
-              <aside className="w-full lg:w-1/4">
+              <aside className="hidden lg:w-1/4">
                 <h2 className="text-blue-900 font-bold text-lg mb-3">Best Games</h2>
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 gap-2">
                   {gameSidebars.map((game, index) => (
@@ -114,10 +115,30 @@ export default async function GameDetailPage({ params }: PageProps) {
               </aside>
 
               {/* Right (Game details + grids) */}
-              <div className="w-full lg:w-3/4 flex flex-col gap-4">
+              <div className="w-full flex flex-col gap-4">
                 <SafeGameIframe game={game}></SafeGameIframe>
                 <GameGrid title="Click to Play, No Download" games={gamesHomepage} />
+								<GoogleAdSense
+									adSlot={'5677062264'}
+									responsive={true}
+									style={{
+										display: 'inline-block',
+										width: "100%",
+										height: 90,
+									}}
+									className="w-full"
+								/>
                 {game.screenshots && <Screenshots data={game} />}
+								<GoogleAdSense
+									adSlot={'5677062264'}
+									responsive={true}
+									style={{
+										display: 'inline-block',
+										width: "100%",
+										height: 250,
+									}}
+									className="w-full"
+								/>
                 <PlayNowBanner data={game} />
                 <AdditionalInfo data={game} />
               </div>
@@ -129,8 +150,36 @@ export default async function GameDetailPage({ params }: PageProps) {
           </div>
 
           {/* Right-side ad (only on desktop) */}
-          <aside className="hidden lg:flex w-full lg:w-1/6">
-						<ResponsiveAd adSlot="5951098589"  />
+          <aside className="hidden lg:flex w-full lg:w-3/12">
+					<div className='w-full'>
+						<GoogleAdSense
+									adSlot={'5677062264'}
+									responsive={true}
+									style={{
+										display: 'inline-block',
+										minWidth: 0,
+										maxWidth: 300,
+										width: 300,
+										height: 250,
+							
+									}}
+									className="w-full"
+								/>
+							</div>
+							<div className='w-full'>
+								<GoogleAdSense
+									adSlot={'5677062264'}
+									responsive={true}
+									style={{
+										display: 'inline-block',
+										minWidth: 0,
+										maxWidth: 300,
+										width: 300,
+										height: 600,
+									}}
+									className="w-full"
+								/>
+								</div>
             
           </aside>
         </div>
