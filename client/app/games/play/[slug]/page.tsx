@@ -129,6 +129,7 @@ export default async function GameDetailPage({ params }: PageProps) {
 									className="w-full"
 								/>
                 {game.screenshots && <Screenshots data={game} />}
+                <PlayNowBanner data={game} />
 								<GoogleAdSense
 									adSlot={'5677062264'}
 									responsive={true}
@@ -139,7 +140,6 @@ export default async function GameDetailPage({ params }: PageProps) {
 									}}
 									className="w-full"
 								/>
-                <PlayNowBanner data={game} />
                 <AdditionalInfo data={game} />
               </div>
             </div>
