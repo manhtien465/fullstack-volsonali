@@ -9,6 +9,7 @@ import Link from "next/link"
 import { StrapiImage } from "@/components/custom/strapi-image"
 import About from "@/components/new-layout10/About"
 import ResponsiveAd from "@/components/ads/ResponsiveAd"
+import GoogleAdSense from "@/components/ads/GoogleAdSense"
 
 export const revalidate = 3600
 
@@ -105,7 +106,19 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
                 </Link>
               </div>
 							{
-								index === 10  && <ResponsiveAd adSlot="5951098589" className="col-span-2 row-span-2" />
+								index === 10  && <div  className="col-span-2 row-span-2" >
+									<GoogleAdSense
+											adSlot={'5951098589'}
+											responsive={false}
+											style={{
+												height:'264px',
+												width:"264px",
+												display: "block",
+												textAlign: "center",
+											}}
+											className="w-full"
+										/>
+								</div>
 							}
 							</>
             ))}

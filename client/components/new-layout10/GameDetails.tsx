@@ -4,6 +4,7 @@ import { StarRating } from './StarRating';
 import { StrapiImage } from '../custom/strapi-image';
 import { MarkdownText } from '../custom/markdown-text';
 import ResponsiveAd from '../ads/ResponsiveAd';
+import GoogleAdSense from '../ads/GoogleAdSense';
 
 const PlayIcon: React.FC = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
@@ -29,7 +30,20 @@ export const GameDetails = ({ data }: PageProps) => {
 
       </div>
       <div className="mt-4 flex flex-wrap">
-				<ResponsiveAd adSlot="5951098589" className="my-8 sm:my-12 w-full md:w-[40%]" />
+				<div className=' md:w-[40%]'>
+				<GoogleAdSense
+											adSlot={'5951098589'}
+											responsive={true}
+											style={{
+												height:'264px',
+												width:'100%',
+												display: "block",
+												textAlign: "center",
+											}}
+											className="w-full"
+										/>
+				</div>
+									
 				<div className=' w-full md:w-[60%] '>
 					<h3 className="font-bold mb-1">Editor's Review:</h3>
 					<div className='h-[300px] overflow-scroll-y overflow-x-hidden'>
