@@ -98,7 +98,7 @@ export default async function GameDetailPage({ params }: PageProps) {
           <div className="w-full lg:w-9/12 flex flex-col gap-4">
             <div className="flex flex-col lg:flex-row gap-4">
               {/* Left sidebar */}
-              <aside className="w-full lg:w-1/4">
+              <aside className="hidden lg:w-1/4">
                 <h2 className="text-blue-900 font-bold text-lg mb-3">Best Games</h2>
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 gap-2">
                   {gameSidebars.map((game, index) => (
@@ -118,7 +118,7 @@ export default async function GameDetailPage({ params }: PageProps) {
               </aside>
 
               {/* Right (Game details + grids) */}
-              <div className="w-full lg:w-3/4 flex flex-col gap-4">
+              <div className="w-full flex flex-col gap-4">
                 <GameDetails data={game} />
                 <GameGrid title="Click to Play, No Download" games={gamesHomepage} />
                 {game.screenshots && <Screenshots data={game} />}
@@ -163,7 +163,7 @@ export default async function GameDetailPage({ params }: PageProps) {
           </div>
 
           {/* Right-side ad (only on desktop) */}
-          <aside className="hidden lg:flex w-full lg:w-3/12">
+          <aside className="hidden lg:block w-full lg:w-3/12">
 						<div className='w-full'>
 						<GoogleAdSense
 									adSlot={'5677062264'}
