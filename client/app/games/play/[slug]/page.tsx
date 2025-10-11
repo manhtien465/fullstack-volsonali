@@ -17,6 +17,8 @@ import NotFoundPage from "@/app/not-found"
 import { EGroups } from '@/features/games/constants/data';
 import SafeGameIframe from '@/components/games/play/SafeIframe';
 import MoreGame from '@/components/new-layout10/MoreGame';
+import ResponsiveAd from '@/components/ads/ResponsiveAd';
+import About from '@/components/new-layout10/About';
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -123,12 +125,13 @@ export default async function GameDetailPage({ params }: PageProps) {
 
             {/* More games */}
             <MoreGame />
+						<About></About>
           </div>
 
           {/* Right-side ad (only on desktop) */}
           <aside className="hidden lg:flex w-full lg:w-1/6">
             <div className="bg-blue-600 border-2 border-blue-700 h-96 w-full flex items-center justify-center text-white rounded-lg">
-              Ad Space
+						<ResponsiveAd adSlot="5951098589" className="my-8 sm:my-12" />
             </div>
           </aside>
         </div>
