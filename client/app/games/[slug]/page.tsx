@@ -124,13 +124,13 @@ export default async function GameDetailPage({ params }: PageProps) {
                 {game.screenshots && <Screenshots data={game} />}
 								<GoogleAdSense
 									adSlot={'5677062264'}
-									adFormat="fluid"
-									adLayout="in-article"
 									responsive={true}
 									style={{
-										height:'113px',
-										display: "block",
-										textAlign: "center",
+										display: 'inline-block',
+										minWidth: 0,
+										maxWidth: 728,
+										width: 728,
+										height: 90,
 									}}
 									className="w-full"
 								/>
@@ -143,13 +143,13 @@ export default async function GameDetailPage({ params }: PageProps) {
 							</div>
 								<GoogleAdSense
 									adSlot={'5677062264'}
-									adFormat="fluid"
-									adLayout="in-article"
 									responsive={true}
 									style={{
-										height:'273px',
-										display: "block",
-										textAlign: "center",
+										display: 'inline-block',
+										minWidth: 0,
+										maxWidth: 970,
+										width: 970,
+										height: 250,
 									}}
 									className="w-full"
 								/>
