@@ -30,18 +30,19 @@ export const GameDetails = ({ data }: PageProps) => {
 
       </div>
       <div className="mt-4 flex flex-wrap">
-				<div className=' md:w-[40%]'>
-				<GoogleAdSense
-											adSlot={'5951098589'}
-											responsive={true}
-											style={{
-												height:'264px',
-												width:'100%',
-												display: "block",
-												textAlign: "center",
-											}}
-											className="w-full"
-										/>
+			<div className="md:w-[40%]">
+					<GoogleAdSense
+						adSlot="5951098589"
+						responsive={true}
+						style={{
+							display: 'inline-block',
+							minWidth: 0,
+							maxWidth: 336,
+							width: 336,
+							height: 280,
+						}}
+						className="w-full"
+					/>
 				</div>
 									
 				<div className=' w-full md:w-[60%] '>

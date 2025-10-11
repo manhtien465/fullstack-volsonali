@@ -106,15 +106,16 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
                 </Link>
               </div>
 							{
-								index === 10  && <div  className="col-span-2 row-span-2" >
+								index === 10  && <div  className="col-span-3 row-span-2" >
 									<GoogleAdSense
 											adSlot={'5951098589'}
 											responsive={false}
 											style={{
-												height:'264px',
-												width:"264px",
-												display: "block",
-												textAlign: "center",
+												display: 'inline-block',
+												minWidth: 0,
+												maxWidth: 320,
+												width: 320,
+												height: 292,
 											}}
 											className="w-full"
 										/>
