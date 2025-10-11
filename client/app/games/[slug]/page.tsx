@@ -127,9 +127,7 @@ export default async function GameDetailPage({ params }: PageProps) {
 									responsive={true}
 									style={{
 										display: 'inline-block',
-										minWidth: 0,
-										maxWidth: 728,
-										width: 728,
+										width: "100%",
 										height: 90,
 									}}
 									className="w-full"
@@ -146,9 +144,7 @@ export default async function GameDetailPage({ params }: PageProps) {
 									responsive={true}
 									style={{
 										display: 'inline-block',
-										minWidth: 0,
-										maxWidth: 970,
-										width: 970,
+										width: "100%",
 										height: 250,
 									}}
 									className="w-full"
