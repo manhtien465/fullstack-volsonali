@@ -131,7 +131,7 @@ export default async function GameDetailPage({ params }: PageProps) {
           {/* Right-side ad (only on desktop) */}
           <aside className="hidden lg:flex w-full lg:w-1/6">
             <div className="bg-blue-600 border-2 border-blue-700 h-96 w-full flex items-center justify-center text-white rounded-lg">
-						<ResponsiveAd adSlot="5951098589" className="my-8 sm:my-12" />
+						<ResponsiveAd adSlot="5951098589"  />
             </div>
           </aside>
         </div>

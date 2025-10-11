@@ -105,7 +105,7 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
                 </Link>
               </div>
 							{
-								index === 10  && <ResponsiveAd adSlot="5951098589" className="col-span-2 row-span-2 w-[300px] h-[250px]" />
+								index === 10  && <ResponsiveAd adSlot="5951098589" className="col-span-2 row-span-2" />
 							}
 							</>
             ))}
