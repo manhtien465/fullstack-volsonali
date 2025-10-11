@@ -29,8 +29,8 @@ export const GameDetails = ({ data }: PageProps) => {
 
       </div>
       <div className="mt-4 flex flex-wrap">
-				<ResponsiveAd adSlot="111" className="my-8 sm:my-12 w-full md:w-[30%]" />
-				<div className=' w-full md:w-[70%] '>
+				<ResponsiveAd adSlot="5951098589" className="my-8 sm:my-12 w-full md:w-[40%]" />
+				<div className=' w-full md:w-[60%] '>
 					<h3 className="font-bold mb-1">Editor's Review:</h3>
 					<div className='h-[300px] overflow-scroll-y overflow-x-hidden'>
 					<MarkdownText content={data.full_description ?? data.desc} />

@@ -120,7 +120,7 @@ export default async function GameDetailPage({ params }: PageProps) {
                 <GameDetails data={game} />
                 <GameGrid title="Click to Play, No Download" games={gamesHomepage} />
                 {game.screenshots && <Screenshots data={game} />}
-								<ResponsiveAd adSlot="111" className="my-8 sm:my-12 h-[113px]" />
+								<ResponsiveAd adSlot="5677062264" className="my-8 sm:my-12 h-[113px]" />
                 <PlayNowBanner data={game} />
 								<div className='block md:hidden bg-blue-600 text-white'>
 								<h3 className="font-bold mb-1">Editor's Review:</h3>
@@ -128,7 +128,7 @@ export default async function GameDetailPage({ params }: PageProps) {
 								<MarkdownText content={game.full_description ?? game.desc} />
 								</div>
 							</div>
-								<ResponsiveAd adSlot="111" className="my-8 sm:my-12" />
+								<ResponsiveAd adSlot="4973520534" className="my-8 sm:my-12" />
                 <AdditionalInfo data={game} />
               </div>
             </div>

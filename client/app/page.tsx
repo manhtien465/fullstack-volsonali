@@ -7,6 +7,8 @@ import { generateMetadata } from "@/utils/seo"
 import GAMAdUnit from "@/components/ads/GAMAdUnit"
 import Link from "next/link"
 import { StrapiImage } from "@/components/custom/strapi-image"
+import About from "@/components/new-layout10/About"
+import ResponsiveAd from "@/components/ads/ResponsiveAd"
 
 export const revalidate = 3600
 
@@ -79,6 +81,7 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
           {/* <GameGrid games={data} loading={false} /> */}
           <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8  xl:grid-cols-10 2xl:grid-cols-10 gap-3 grid-flow-dense">
             {data.map((game, index) => (
+							<>
               <div
                 key={`${game.documentId}-${index}`}
                 className={`
@@ -101,10 +104,14 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
                   </div>
                 </Link>
               </div>
+							{
+								index === 10  && <ResponsiveAd adSlot="5951098589" className="col-span-2 row-span-2 w-[300px] h-[250px]" />
+							}
+							</>
             ))}
           </div>
         </div>
-
+				<About></About>
 
 
         {/* Mid-Content Ad */}
